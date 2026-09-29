@@ -11,7 +11,7 @@
 <style>
 :root{--ink:#080B14;--panel:#131C31;--line:#26324f;--bone:#EAEEF7;--mute:#93A0BC;--mute-2:#5C6A8A;--teal:#33E1C4;--amber:#FFC24B}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;overflow:hidden}
+html,body{margin:0;height:100%;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent}
 body{background-image:linear-gradient(rgba(51,225,196,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(51,225,196,.03) 1px,transparent 1px);background-size:46px 46px}
 header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 22px;background:rgba(8,11,20,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px))}
 .h-left{display:flex;align-items:center;gap:12px;min-width:0}
@@ -23,7 +23,7 @@ button,.back{font-family:"Archivo";font-weight:700;font-size:.8rem;color:var(--b
 button:hover,.back:hover{border-color:var(--mute-2)}
 .back{color:var(--teal)}
 @media(max-width:640px){.hide-sm{display:none}.h-title small{display:none}}
-#svg{display:block;width:100vw;height:100vh;cursor:grab}
+#svg{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
 #svg:active{cursor:grabbing}
 .hint{position:fixed;left:22px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;font-size:.78rem;color:var(--mute-2);background:rgba(8,11,20,.7);border:1px solid var(--line);border-radius:100px;padding:8px 14px;backdrop-filter:blur(8px)}
 .legend{position:fixed;right:22px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;display:flex;flex-wrap:wrap;gap:4px 12px;max-width:min(60vw,420px);justify-content:flex-end;background:rgba(8,11,20,.7);border:1px solid var(--line);border-radius:12px;padding:10px 14px;backdrop-filter:blur(8px)}
@@ -94,7 +94,8 @@ text{font-family:"Inter",sans-serif}
   Object.keys(palette).forEach(function(k){var s=document.createElement('span');s.innerHTML='<i style="background:'+palette[k]+'"></i>'+k;lg.appendChild(s);});
 
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dx=24,dy=210;
+  var isMobile=window.matchMedia&&window.matchMedia('(max-width:640px)').matches;
+  var dx=isMobile?23:24,dy=isMobile?140:210;
   var tree=d3.tree().nodeSize([dx,dy]);
   var diagonal=d3.linkHorizontal().x(function(d){return d.y;}).y(function(d){return d.x;});
 
@@ -108,7 +109,7 @@ text{font-family:"Inter",sans-serif}
 
   var root=d3.hierarchy(data);
   root.x0=0;root.y0=0;
-  root.descendants().forEach(function(d,i){d.id=i;d._children=d.children;if(d.depth>1)d.children=null;});
+  root.descendants().forEach(function(d,i){d.id=i;d._children=d.children;if(d.depth>=(isMobile?1:2))d.children=null;});
 
   function sizes(){return {w:window.innerWidth,h:window.innerHeight};}
 
@@ -132,7 +133,7 @@ text{font-family:"Inter",sans-serif}
       .attr("x",function(d){return d._children?-11:11;})
       .attr("text-anchor",function(d){return d._children?"end":"start";})
       .attr("font-family","Inter, sans-serif")
-      .attr("font-size",function(d){return d.depth===0?15:(d.depth===1?13.5:12);})
+      .attr("font-size",function(d){return d.depth===0?(isMobile?16:15):(d.depth===1?(isMobile?14.5:13.5):(isMobile?13:12));})
       .attr("font-weight",function(d){return d.depth<=1?700:500;})
       .attr("fill",function(d){return d.depth===0?"#EAEEF7":(d.depth===1?colorOf(d):"#C7D0E4");})
       .attr("paint-order","stroke").attr("stroke","#080B14").attr("stroke-width",4)
@@ -160,9 +161,19 @@ text{font-family:"Inter",sans-serif}
   }
 
   function fit(){
-    var s=sizes();
+    var s={w:window.innerWidth,h:window.innerHeight};
     svg.attr("width",s.w).attr("height",s.h);
-    svg.transition().duration(reduce?0:500).call(zoom.transform,d3.zoomIdentity.translate(90,s.h/2).scale(0.82));
+    var nodes=root.descendants();
+    var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    nodes.forEach(function(d){if(d.x<x0)x0=d.x;if(d.x>x1)x1=d.x;if(d.y<y0)y0=d.y;if(d.y>y1)y1=d.y;});
+    var treeH=(x1-x0)||1,treeW=(y1-y0)||1;
+    var padTop=88,padSide=isMobile?16:44,padBottom=58,labelPad=isMobile?150:240;
+    var availW=s.w-padSide*2,availH=s.h-padTop-padBottom;
+    var scale=Math.min(availW/(treeW+labelPad),availH/(treeH+70),isMobile?1.05:1.1);
+    scale=Math.max(scale,0.18);
+    var tx=padSide-y0*scale;
+    var ty=padTop-x0*scale+Math.max(0,(availH-treeH*scale)/2);
+    svg.transition().duration(reduce?0:500).call(zoom.transform,d3.zoomIdentity.translate(tx,ty).scale(scale));
   }
 
   update(root);

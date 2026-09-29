@@ -295,6 +295,39 @@ footer b{font-family:"Archivo";color:var(--bone)}
 .mapbtn:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 6px 30px rgba(51,225,196,.45)}
 .mapbtn .arrow{font-size:1.1em}
 
+/* MÓVIL — optimización para iPhone y pantallas pequeñas */
+@media(max-width:600px){
+  .wrap{padding:0 16px}
+  .section{padding:56px 0}
+  .eyebrow{margin-bottom:14px;font-size:.68rem;letter-spacing:.2em}
+  h2.big{font-size:clamp(1.7rem,7.4vw,2.3rem);margin-bottom:14px}
+  .lead{font-size:1rem}
+  .hero{padding:34px 0 48px}
+  .hero h1{font-size:clamp(2.2rem,10.5vw,3rem);margin-bottom:20px}
+  .hero .sub{font-size:1.02rem;margin-bottom:26px}
+  .hero .glow{width:360px;height:360px;right:-120px}
+  .nav-in{padding:11px 16px}
+  nav .brand small{display:none}
+  .namebox{width:100%}
+  .thesis{padding:22px 20px}.thesis .q{font-size:1.12rem}
+  .qbox{padding:22px 20px}.qbox .q{font-size:1.1rem}
+  .statstrip div{padding:16px 14px}
+  .statstrip b{font-size:1.7rem}
+  .card{padding:20px}
+  .chartbox{padding:18px}
+  .chart-h{height:210px}
+  .path-panel{padding:20px 16px}
+  .path-head{gap:12px}
+  .path-head h3{font-size:1.4rem}
+  .path-market .big-num{font-size:1.9rem}
+  .path-tab{padding:12px 16px;font-size:.84rem}
+  .mapbtn{width:100%;justify-content:center;padding:14px 20px}
+  .law,.zone,.voice,.book,.pod,.brain,.motor,.diff,.role-card,.step{padding:18px}
+  .roles{gap:12px}
+  .thesis,.qbox{border-radius:12px}
+}
+@media(max-width:600px){.path-tabs,.wrap-scroll{-webkit-overflow-scrolling:touch}}
+
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
