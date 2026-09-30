@@ -295,6 +295,29 @@ footer b{font-family:"Archivo";color:var(--bone)}
 .mapbtn:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 6px 30px rgba(51,225,196,.45)}
 .mapbtn .arrow{font-size:1.1em}
 
+/* SIMULADOR de ingresos */
+.calc{display:grid;grid-template-columns:1fr .92fr;gap:18px;margin-top:26px}
+@media(max-width:760px){.calc{grid-template-columns:1fr}}
+.calc-controls{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+.calc-group{margin-bottom:22px}.calc-group:last-child{margin-bottom:0}
+.calc-group .ttl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;gap:10px}
+.calc-group .ttl h5{font-family:"Archivo";font-size:.95rem;font-weight:700;margin:0}
+.calc-group .ttl .badge{font-size:.64rem;font-family:"Archivo";font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-2)}
+.calc-row{margin-bottom:15px}.calc-row:last-child{margin-bottom:0}
+.calc-row label{display:flex;justify-content:space-between;font-size:.84rem;color:var(--mute);margin-bottom:8px}
+.calc-row label b{color:var(--teal);font-family:"Archivo";font-variant-numeric:tabular-nums;font-weight:700}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:100px;background:var(--line);outline:none;accent-color:var(--teal);margin:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--teal);cursor:pointer;box-shadow:0 0 12px rgba(51,225,196,.5);border:3px solid var(--ink-2)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid var(--ink-2)}
+.calc-result{background:linear-gradient(160deg,var(--panel-2),var(--ink-2));border:1px solid var(--teal-dim);border-radius:14px;padding:26px;display:flex;flex-direction:column;justify-content:center}
+.calc-result .rlabel{font-family:"Archivo";font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.calc-result .rbig{font-family:"Archivo";font-weight:900;font-size:clamp(2.2rem,7vw,3.2rem);color:var(--teal);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+.calc-result .rbig small{font-size:.36em;color:var(--mute);font-weight:700}
+.calc-result .rsub{display:flex;gap:24px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.calc-result .rsub b{display:block;font-family:"Archivo";font-weight:800;font-size:1.3rem;color:var(--bone);font-variant-numeric:tabular-nums}
+.calc-result .rsub span{font-size:.76rem;color:var(--mute)}
+.calc-note{font-size:.78rem;color:var(--mute-2);margin-top:16px}
+
 /* MÓVIL — optimización para iPhone y pantallas pequeñas */
 @media(max-width:600px){
   .wrap{padding:0 16px}
@@ -340,7 +363,7 @@ footer b{font-family:"Archivo";color:var(--bone)}
     <div class="nav-links">
       <a href="#caminos">Caminos</a><a href="#tesis">Tesis</a><a href="#ramas">Ramas</a><a href="#nucleo">Núcleo</a><a href="#timing">Timing</a>
       <a href="#mercado">Mercado</a><a href="#leyes">Leyes</a><a href="#ia">IA</a><a href="#nichos">Nichos</a>
-      <a href="#fusa">Fusagasugá</a><a href="#tarifas">Tarifas</a><a href="#voces">Voces</a><a href="#equipo">Equipo</a><a href="#fundamentos">Fundamentos</a><a href="#difusion">Difusión</a><a href="#ruta">Ruta</a><a href="mapa.html" target="_blank" rel="noopener" style="color:var(--teal)">Mapa ↗</a>
+      <a href="#fusa">Fusagasugá</a><a href="#tarifas">Tarifas</a><a href="#calc">Simulador</a><a href="#voces">Voces</a><a href="#equipo">Equipo</a><a href="#fundamentos">Fundamentos</a><a href="#difusion">Difusión</a><a href="#ruta">Ruta</a><a href="mapa.html" target="_blank" rel="noopener" style="color:var(--teal)">Mapa ↗</a>
     </div>
   </div>
 </nav>
@@ -580,6 +603,53 @@ footer b{font-family:"Archivo";color:var(--bone)}
       <div class="src">Fuente: Registraduría / El Espectador, jornada electoral del 29 de octubre de 2023.</div>
     </div>
     <div class="qbox reveal"><p class="q">En una plaza chica, ser el estudio que produce con calidad de ciudad grande es una ventaja enorme: menos rivales buenos y un mercado político que se renueva cada 4 años.</p></div>
+
+    <div class="reveal" style="margin-top:56px;padding-top:34px;border-top:1px solid var(--line)">
+      <h3 style="font-family:Archivo;font-weight:800;font-size:1.4rem;margin-bottom:6px">El panorama político 2027</h3>
+      <p style="color:var(--mute);font-size:.96rem;max-width:62ch">El alcalde actual no puede reelegirse: la cancha queda abierta y peleada, con todo el espectro de partidos y decenas de aspirantes. Cada uno necesita quién le produzca la campaña.</p>
+    </div>
+    <div class="grid g4 stag" style="margin-top:22px">
+      <div class="card"><div class="kpi">Abierta</div><h3 style="font-size:1rem">Sin reelección</h3><p>El alcalde 2024–2027 no continúa: alcaldía disputada desde cero.</p></div>
+      <div class="card"><div class="kpi">~16</div><h3 style="font-size:1rem">A la alcaldía en 2023</h3><p>Todo el espectro: coaliciones, Centro Democrático, U, Liberal, Pacto, Nuevo Liberalismo…</p></div>
+      <div class="card"><div class="kpi">17</div><h3 style="font-size:1rem">Curules de concejo</h3><p>La mayoría de concejales buscan repetir, más los retadores: cientos de campañas.</p></div>
+      <div class="card"><div class="kpi">+ JAL</div><h3 style="font-size:1rem">Ediles y comunales</h3><p>Otro nivel de campañas pequeñas, ideales para paquetes de entrada.</p></div>
+    </div>
+
+    <div class="reveal" style="margin-top:56px;padding-top:34px;border-top:1px solid var(--line)">
+      <div class="eyebrow"><span class="chapter-no">◆</span> Cómo llegamos a las cifras</div>
+      <h2 class="big" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">El puente: del mercado a nuestra caja</h2>
+      <p class="lead">Las cifras grandes de arriba son el tamaño del mercado. Nosotros solo capturamos una fracción. Esto es lo que hay que vender en Fusa para llegar a números concretos.</p>
+    </div>
+    <div class="grid g3 stag" style="margin-top:26px">
+      <div class="card" style="border-top:3px solid var(--mute-2)">
+        <h3>Conservador</h3>
+        <p style="margin-bottom:14px">Empezando despacio, medio tiempo.</p>
+        <p style="font-size:.86rem;color:var(--bone);margin-bottom:6px"><b style="color:var(--teal)">Comercial:</b> 4 clientes × $1,2M = $4,8M/mes → ~$58M/año</p>
+        <p style="font-size:.86rem;color:var(--bone);margin-bottom:14px"><b style="color:var(--amber)">Político 2027:</b> 3 campañas chicas ≈ $18M en el ciclo</p>
+        <div style="border-top:1px solid var(--line);padding-top:12px"><span style="font-size:.74rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em">Año electoral</span><div style="font-family:Archivo;font-weight:900;font-size:1.6rem;color:var(--teal)">~$76M</div></div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--teal)">
+        <h3>Realista</h3>
+        <p style="margin-bottom:14px">Con foco y el ciclo 2027 en marcha.</p>
+        <p style="font-size:.86rem;color:var(--bone);margin-bottom:6px"><b style="color:var(--teal)">Comercial:</b> 8 clientes × $1,5M = $12M/mes → ~$144M/año</p>
+        <p style="font-size:.86rem;color:var(--bone);margin-bottom:14px"><b style="color:var(--amber)">Político 2027:</b> 1 mediana + varias chicas ≈ $50M en el ciclo</p>
+        <div style="border-top:1px solid var(--line);padding-top:12px"><span style="font-size:.74rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em">Año electoral</span><div style="font-family:Archivo;font-weight:900;font-size:1.6rem;color:var(--teal)">~$194M</div></div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--amber)">
+        <h3>Ambicioso</h3>
+        <p style="margin-bottom:14px">Equipo armado y una campaña grande.</p>
+        <p style="font-size:.86rem;color:var(--bone);margin-bottom:6px"><b style="color:var(--teal)">Comercial:</b> 14 clientes × $1,8M = $25,2M/mes → ~$302M/año</p>
+        <p style="font-size:.86rem;color:var(--bone);margin-bottom:14px"><b style="color:var(--amber)">Político 2027:</b> 1 alcaldía + varias de concejo ≈ $120M</p>
+        <div style="border-top:1px solid var(--line);padding-top:12px"><span style="font-size:.74rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em">Año electoral</span><div style="font-family:Archivo;font-weight:900;font-size:1.6rem;color:var(--teal)">~$422M</div></div>
+      </div>
+    </div>
+    <div class="chartbox reveal" style="margin-top:18px">
+      <h4>Ingreso proyectado en el año electoral (2027)</h4>
+      <div class="cap">Millones de COP · comercial recurrente + bolsa política del ciclo. Estimación propia para planear, no una promesa.</div>
+      <div class="chart-h"><canvas id="chEsc"></canvas></div>
+      <div class="src">Base: tarifas de mercado ya investigadas, ajustadas a la escala de Fusagasugá.</div>
+    </div>
+    <div class="qbox reveal"><p class="q">No hay que ganarse el mercado entero. Con 8 clientes fijos de contenido y un puñado de campañas en 2027, Fusa ya deja cerca de $194 millones en el año pico. A eso se llega tocando puertas, no esperando.</p></div>
   </div>
 </section>
 
@@ -609,6 +679,43 @@ footer b{font-family:"Archivo";color:var(--bone)}
     <div class="two stag">
       <div class="diff"><h4>Diferencial 1 · Velocidad por IA</h4><p>Volumen (8–12 reels/mes) a precio de 4, sin perder margen.</p></div>
       <div class="diff"><h4>Diferencial 2 · Respaldo legal</h4><p>Contratos, derechos y contenido que cumple. Justifica cobrar más.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section class="section" id="calc">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="chapter-no">◆</span> Simulador de ingresos</div>
+    <h2 class="big reveal">¿Cuánto podríamos facturar?</h2>
+    <p class="lead reveal">Mueve los controles con tus clientes y tarifas reales; el cálculo se actualiza al instante. Son estimaciones para planear, no promesas.</p>
+    <div class="calc">
+      <div class="calc-controls reveal">
+        <div class="calc-group">
+          <div class="ttl"><h5>Contenido mensual (fee)</h5><span class="badge">recurrente</span></div>
+          <div class="calc-row"><label>Clientes a fee <b id="v-cf">4</b></label><input type="range" id="cf" min="0" max="20" step="1" value="4" aria-label="Clientes a fee mensual"></div>
+          <div class="calc-row"><label>Fee promedio <b id="v-cfp">$2,5 M</b></label><input type="range" id="cfp" min="1" max="5" step="0.5" value="2.5" aria-label="Fee promedio mensual"></div>
+        </div>
+        <div class="calc-group">
+          <div class="ttl"><h5>Producción por proyecto</h5><span class="badge">puntual</span></div>
+          <div class="calc-row"><label>Proyectos al mes <b id="v-pr">3</b></label><input type="range" id="pr" min="0" max="15" step="1" value="3" aria-label="Proyectos al mes"></div>
+          <div class="calc-row"><label>Precio promedio <b id="v-prp">$1,5 M</b></label><input type="range" id="prp" min="0.5" max="6" step="0.5" value="1.5" aria-label="Precio promedio por proyecto"></div>
+        </div>
+        <div class="calc-group">
+          <div class="ttl"><h5>Campañas (en temporada)</h5><span class="badge">estacional</span></div>
+          <div class="calc-row"><label>Campañas activas <b id="v-cp">0</b></label><input type="range" id="cp" min="0" max="6" step="1" value="0" aria-label="Campañas activas"></div>
+          <div class="calc-row"><label>Fee de campaña <b id="v-cpp">$6 M</b></label><input type="range" id="cpp" min="3" max="15" step="1" value="6" aria-label="Fee mensual de campaña"></div>
+        </div>
+      </div>
+      <div class="calc-result reveal">
+        <div class="rlabel">Ingreso mensual bruto</div>
+        <div class="rbig" id="r-month">$0 <small>/mes</small></div>
+        <div class="rsub">
+          <div><b id="r-year">$0</b><span>al año (bruto)</span></div>
+          <div><b id="r-net">$0</b><span>neto aprox./mes</span></div>
+        </div>
+        <p class="calc-note">Neto estimado descontando ~35% (freelancers, herramientas e impuestos). Las campañas son estacionales: no se facturan los 12 meses.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -934,6 +1041,34 @@ footer b{font-family:"Archivo";color:var(--bone)}
     render(0);
   })();
 
+  /* Simulador de ingresos */
+  (function(){
+    var ids=['cf','cfp','pr','prp','cp','cpp'],el={};
+    ids.forEach(function(i){el[i]=document.getElementById(i);});
+    if(!el.cf)return;
+    function money(v){
+      if(v>=1e6)return '$'+(v/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})+' M';
+      if(v>=1e3)return '$'+Math.round(v/1e3)+' k';
+      return '$'+Math.round(v);
+    }
+    function m1(x){return '$'+x.toLocaleString('es-CO',{minimumFractionDigits:(x%1?1:0),maximumFractionDigits:1})+' M';}
+    function calc(){
+      var cf=+el.cf.value,cfp=+el.cfp.value,pr=+el.pr.value,prp=+el.prp.value,cp=+el.cp.value,cpp=+el.cpp.value;
+      document.getElementById('v-cf').textContent=cf;
+      document.getElementById('v-cfp').textContent=m1(cfp);
+      document.getElementById('v-pr').textContent=pr;
+      document.getElementById('v-prp').textContent=m1(prp);
+      document.getElementById('v-cp').textContent=cp;
+      document.getElementById('v-cpp').textContent=m1(cpp);
+      var month=(cf*cfp+pr*prp+cp*cpp)*1e6;
+      document.getElementById('r-month').innerHTML=money(month)+' <small>/mes</small>';
+      document.getElementById('r-year').textContent=money(month*12);
+      document.getElementById('r-net').textContent=money(month*0.65);
+    }
+    ids.forEach(function(i){el[i].addEventListener('input',calc);});
+    calc();
+  })();
+
   /* GSAP animations */
   if(hasGSAP && !reduce){
     gsap.registerPlugin(ScrollTrigger);
@@ -1019,7 +1154,9 @@ footer b{font-family:"Archivo";color:var(--bone)}
     function redes(c){new Chart(c,{type:'bar',data:{labels:['Facebook','TikTok','Instagram','LinkedIn'],datasets:[{data:[44.2,37.7,23.3,16.0],backgroundColor:['#4A6FA5','#33E1C4','#33E1C4','#4A6FA5'],borderRadius:6,barPercentage:.64}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return x.parsed.y+' millones de usuarios'}}}},scales:{y:{grid:{color:line},ticks:{callback:function(v){return v+'M'}}},x:{grid:{display:false}}}})});}
     function surv(c){new Chart(c,{type:'bar',data:{labels:['Micro','Pequeña','Mediana','Grande'],datasets:[{data:[33.4,60.9,73.7,85.7],backgroundColor:[coral,amber,teal,teal],borderRadius:6,barPercentage:.62}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return x.parsed.y+'% sobrevive a 5 años'}}}},scales:{y:{grid:{color:line},max:100,ticks:{callback:function(v){return v+'%'}}},x:{grid:{display:false}}}})});}
 
-    var map={chInvest:invest,chFormat:format,chGrowth:growth,chTopes:topes,chFusa:fusa,chRedes:redes,chSurv:surv};
+    function esc(c){new Chart(c,{type:'bar',data:{labels:['Conservador','Realista','Ambicioso'],datasets:[{data:[76,194,422],backgroundColor:['#5C6A8A',teal,amber],borderRadius:6,barPercentage:.6}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return '$'+x.parsed.y+' millones en 2027'}}}},scales:{y:{grid:{color:line},ticks:{callback:function(v){return '$'+v+'M'}}},x:{grid:{display:false}}}})});}
+
+    var map={chInvest:invest,chFormat:format,chGrowth:growth,chTopes:topes,chFusa:fusa,chRedes:redes,chSurv:surv,chEsc:esc};
     if('IntersectionObserver' in window){
       var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){make(e.target.id,map[e.target.id]);io.unobserve(e.target);}})},{rootMargin:'0px 0px -10% 0px'});
       Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
