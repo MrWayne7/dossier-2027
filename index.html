@@ -3,1177 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dossier estratégico · negocio creativo + político · Bogotá 2027</title>
+<title>[ Nombre ] · Acceso</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="theme.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#080B14;--ink-2:#0D1322;--panel:#131C31;--panel-2:#1A2540;--line:#26324f;
-  --bone:#EAEEF7;--mute:#93A0BC;--mute-2:#5C6A8A;
-  --teal:#33E1C4;--teal-dim:#1f8f80;--amber:#FFC24B;--coral:#FF6E5B;--violet:#9B8CFF;
-  --maxw:1160px;
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-}
+:root{--ink:#070A12;--ink-2:#0D1322;--panel:#131C31;--panel-2:#1A2540;--line:#273350;--bone:#EEF2FA;--mute:#9AA7C4;--mute-2:#5F6D8E;--teal:#33E1C4;--amber:#FFC24B;--green:#4FD1A5;--coral:#FF6E5B;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.6;
-  background-image:linear-gradient(rgba(51,225,196,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(51,225,196,.03) 1px,transparent 1px);
-  background-size:46px 46px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,h4{font-family:"Archivo",sans-serif;line-height:1.02;margin:0;letter-spacing:-.02em}
-p{margin:0 0 1em}
-a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
-strong{color:#fff;font-weight:600}
-::selection{background:var(--amber);color:var(--ink)}
-:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.section{padding:92px 0;border-top:1px solid var(--line);position:relative}
-.eyebrow{font-family:"Archivo";font-weight:700;font-size:.74rem;letter-spacing:.26em;color:var(--teal);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--teal)}
-.chapter-no{font-family:"Archivo";font-weight:800;color:var(--mute-2);font-size:.9rem;letter-spacing:.1em}
-h2.big{font-size:clamp(2rem,4.8vw,3.5rem);font-weight:800;max-width:20ch;margin-bottom:16px}
-.lead{font-size:clamp(1.02rem,1.7vw,1.24rem);color:var(--mute);max-width:60ch;line-height:1.5}
-.serif{font-family:"Newsreader",serif;font-style:italic;font-weight:400}
-
-/* progress + glow */
-#progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--teal),var(--amber));transform:scaleX(0);transform-origin:left;z-index:100}
-.glow{position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(51,225,196,.13),transparent 62%);pointer-events:none;z-index:0}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:60;background:rgba(8,11,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:var(--maxw);margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-family:"Archivo";font-weight:800;font-size:.98rem}
-.brand .dot{width:11px;height:11px;background:var(--teal);border-radius:2px;box-shadow:0 0 14px var(--teal)}
-.brand small{font-family:"Inter";font-weight:500;color:var(--mute-2);font-size:.72rem}
-.nav-links{display:flex;gap:20px;font-size:.85rem;overflow-x:auto}
-.nav-links a{color:var(--mute);white-space:nowrap}.nav-links a:hover{color:var(--bone);text-decoration:none}
-@media(max-width:900px){.nav-links{display:none}}
-
-/* HERO */
-.hero{position:relative;padding:70px 0 80px;overflow:hidden}
-.hero .glow{right:-160px;top:-80px}
-.hero-inner{position:relative;z-index:2}
-.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
-.tag{font-family:"Archivo";font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);border-radius:100px;color:var(--mute)}
-.tag.live{color:var(--amber);border-color:rgba(255,194,75,.4)}
-.tag.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--amber);margin-right:7px;vertical-align:middle;box-shadow:0 0 8px var(--amber)}
-.hero h1{font-size:clamp(2.7rem,7.4vw,5.6rem);font-weight:900;letter-spacing:-.035em;max-width:15ch;margin-bottom:24px}
-.hero h1 .hl{color:var(--teal)}
-.hero h1 .w{display:inline-block}
-.hero .sub{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--mute);max-width:52ch;margin-bottom:34px}
-.namebox{display:inline-flex;flex-direction:column;gap:2px;border:1.5px dashed var(--mute-2);border-radius:10px;padding:12px 18px;margin-bottom:38px}
-.namebox b{font-family:"Archivo";font-weight:800;font-size:1.05rem}
-.namebox span{font-size:.78rem;color:var(--mute-2)}
-.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:26px}
-@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
-.thesis{background:linear-gradient(150deg,var(--panel-2),var(--ink-2));border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:14px;padding:30px 32px}
-.thesis .q{font-family:"Newsreader",serif;font-style:italic;font-size:clamp(1.25rem,2.5vw,1.8rem);line-height:1.35;max-width:40ch}
-.countdown{background:linear-gradient(155deg,var(--panel),var(--ink-2));border:1px solid var(--line);border-radius:16px;padding:24px}
-.countdown h4{font-family:"Archivo";font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
-.countdown .date{font-size:.82rem;color:var(--mute);margin-bottom:18px}
-.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.clock div{background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 4px;text-align:center}
-.clock b{display:block;font-family:"Archivo";font-weight:900;font-size:clamp(1.4rem,3vw,2rem);color:var(--teal);font-variant-numeric:tabular-nums}
-.clock span{font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute-2)}
-.statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:38px;position:relative;z-index:2}
-@media(max-width:720px){.statstrip{grid-template-columns:repeat(2,1fr)}}
-.statstrip div{background:var(--ink-2);padding:22px 18px}
-.statstrip b{display:block;font-family:"Archivo";font-weight:900;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--bone);font-variant-numeric:tabular-nums}
-.statstrip .c-teal{color:var(--teal)}.statstrip .c-amber{color:var(--amber)}.statstrip .c-coral{color:var(--coral)}
-.statstrip small{color:var(--mute);font-size:.82rem;line-height:1.35;display:block;margin-top:4px}
-
-/* grids + cards */
-.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
-.card h3{font-size:1.12rem;font-weight:700;margin-bottom:8px}
-.card p{color:var(--mute);font-size:.92rem;margin-bottom:0}
-.card .kpi{font-family:"Archivo";font-weight:900;font-size:1.9rem;color:var(--teal);margin-bottom:2px;font-variant-numeric:tabular-nums}
-.qbox{background:linear-gradient(150deg,var(--panel-2),var(--ink-2));border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:14px;padding:28px 32px;margin-top:24px}
-.qbox .q{font-family:"Newsreader",serif;font-style:italic;font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.35;max-width:44ch}
-
-/* tree */
-.trunk{display:flex;align-items:center;gap:14px;background:var(--ink-2);border:1px solid var(--teal-dim);border-radius:12px;padding:18px 22px;margin-top:26px}
-.trunk .badge{font-family:"Archivo";font-weight:800;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--teal);padding:5px 10px;border-radius:6px}
-.trunk b{font-family:"Archivo";font-size:1.12rem;font-weight:800}
-.branches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-@media(max-width:820px){.branches{grid-template-columns:1fr}}
-.branch{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}
-.branch .h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.branch .ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;font-family:"Archivo";font-weight:900}
-.branch h4{font-size:1rem;font-weight:700}
-.branch ul{margin:0;padding-left:18px;color:var(--mute);font-size:.88rem;line-height:1.7}
-.branch.creative .ic{background:rgba(51,225,196,.16);color:var(--teal)}
-.branch.legal .ic{background:rgba(255,194,75,.16);color:var(--amber)}
-.branch.political .ic{background:rgba(255,110,91,.16);color:var(--coral)}
-.branch .tagline{font-size:.72rem;color:var(--mute-2);text-transform:uppercase;letter-spacing:.08em;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-
-/* motors */
-.motors{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-@media(max-width:700px){.motors{grid-template-columns:1fr}}
-.motor{border:1px solid var(--line);border-radius:14px;padding:24px;background:var(--panel)}
-.motor.pol{border-top:3px solid var(--coral)}.motor.com{border-top:3px solid var(--teal)}
-.motor .k{font-family:"Archivo";font-weight:800;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
-.motor.pol .k{color:var(--coral)}.motor.com .k{color:var(--teal)}
-.motor h4{font-size:1.2rem;font-weight:800;margin-bottom:8px}
-.motor p{font-size:.9rem;color:var(--mute);margin:0 0 12px}
-.motor .tags{display:flex;flex-wrap:wrap;gap:6px}
-.motor .tags span{font-size:.72rem;color:var(--mute);border:1px solid var(--line);border-radius:100px;padding:3px 10px}
-
-/* timeline */
-.timeline{position:relative;margin-top:30px;padding-left:4px}
-.tl-item{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:0 0 26px;position:relative}
-@media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:6px}}
-.tl-item::before{content:"";position:absolute;left:130px;top:6px;bottom:-6px;width:1px;background:var(--line)}
-@media(max-width:640px){.tl-item::before{display:none}}
-.tl-date{font-family:"Archivo";font-weight:800;font-size:.9rem;color:var(--amber);text-align:right;position:relative}
-@media(max-width:640px){.tl-date{text-align:left}}
-.tl-date::after{content:"";position:absolute;right:-24px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--ink);border:2px solid var(--amber)}
-@media(max-width:640px){.tl-date::after{display:none}}
-.tl-body h4{font-size:1rem;font-weight:700;margin-bottom:3px}.tl-body p{font-size:.88rem;color:var(--mute);margin:0}
-.tl-item.key .tl-date{color:var(--teal)}
-.tl-item.key .tl-date::after{border-color:var(--teal);box-shadow:0 0 12px var(--teal)}
-
-/* charts */
-.chartbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
-.chartbox h4{font-size:1.02rem;font-weight:700;margin-bottom:4px}
-.chartbox .cap{font-size:.8rem;color:var(--mute);margin-bottom:16px}
-.chart-h{position:relative;height:250px}
-.src{font-size:.7rem;color:var(--mute-2);margin-top:14px}
-
-/* laws */
-.laws{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
-@media(max-width:760px){.laws{grid-template-columns:1fr}}
-.law{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;border-left:3px solid var(--violet)}
-.law .no{font-family:"Archivo";font-weight:800;font-size:.72rem;letter-spacing:.1em;color:var(--violet);text-transform:uppercase;margin-bottom:8px}
-.law h4{font-size:1.05rem;font-weight:700;margin-bottom:8px}
-.law p{font-size:.88rem;color:var(--mute);margin:0}
-.law .arts{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.law .arts span{font-family:"Archivo";font-size:.68rem;font-weight:700;letter-spacing:.04em;color:var(--bone);background:var(--ink);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
-
-/* IA angle */
-.ia{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-@media(max-width:760px){.ia{grid-template-columns:1fr}}
-.ia .box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
-.ia .box.rule{border-top:3px solid var(--amber)}
-.ia .box.chance{border-top:3px solid var(--teal)}
-.ia .box h4{font-size:1.08rem;font-weight:700;margin-bottom:10px}
-.ia .box p{font-size:.9rem;color:var(--mute);margin:0 0 10px}
-.ia .box .facts{margin:0;padding-left:16px;color:var(--mute);font-size:.86rem;line-height:1.7}
-
-/* niche */
-.niche{display:flex;flex-direction:column;gap:12px;margin-top:26px}
-.niche-row{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
-@media(max-width:640px){.niche-row{grid-template-columns:36px 1fr}.niche-score{grid-column:2;justify-self:start}}
-.niche-rank{font-family:"Archivo";font-weight:900;font-size:1.5rem;color:var(--mute-2);text-align:center}
-.niche-row.top .niche-rank{color:var(--teal)}
-.niche-info h4{font-size:1rem;font-weight:700;margin-bottom:2px}.niche-info p{font-size:.85rem;color:var(--mute);margin:0}
-.niche-score{display:flex;gap:5px;align-items:center}
-.pip{width:9px;height:20px;border-radius:2px;background:var(--line);transform-origin:bottom}
-.pip.on{background:var(--teal)}
-.niche-score .lab{font-size:.68rem;color:var(--mute-2);margin-right:6px;text-transform:uppercase;letter-spacing:.06em}
-
-/* zones */
-.zones{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
-@media(max-width:700px){.zones{grid-template-columns:1fr}}
-.zone{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;border-top:3px solid var(--violet)}
-.zone h4{font-size:1.02rem;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.zone h4 span{font-family:"Archivo";font-size:.68rem;font-weight:700;color:var(--violet);letter-spacing:.08em;white-space:nowrap}
-.zone p{font-size:.86rem;color:var(--mute);margin:0}
-
-/* price */
-.ptable{width:100%;border-collapse:collapse;font-size:.9rem}
-.ptable th,.ptable td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line)}
-.ptable th{font-family:"Archivo";font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-.ptable td:last-child,.ptable th:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.ptable .money{font-family:"Archivo";font-weight:700;color:var(--teal)}
-.wrap-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-top:26px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-@media(max-width:760px){.two{grid-template-columns:1fr}}
-.diff{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;border-top:3px solid var(--teal)}
-.diff h4{font-size:1.06rem;font-weight:700;margin-bottom:8px}.diff p{font-size:.9rem;color:var(--mute);margin:0}
-
-/* voices */
-.voices{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
-@media(max-width:760px){.voices{grid-template-columns:1fr}}
-.voice{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
-.voice .quote{font-family:"Newsreader",serif;font-style:italic;font-size:1.12rem;line-height:1.4;color:var(--bone);margin-bottom:14px}
-.voice .who{display:flex;align-items:center;gap:12px}
-.voice .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dim),var(--panel-2));display:grid;place-items:center;font-family:"Archivo";font-weight:800;color:var(--bone);font-size:.95rem;flex:none}
-.voice .who b{font-size:.92rem;display:block}.voice .who span{font-size:.78rem;color:var(--mute)}
-
-/* library */
-.books{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
-@media(max-width:820px){.books{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.books{grid-template-columns:1fr}}
-.book{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start}
-.book .spine{width:6px;align-self:stretch;border-radius:4px;background:var(--amber);flex:none}
-.book.c1 .spine{background:var(--teal)}.book.c2 .spine{background:var(--amber)}.book.c3 .spine{background:var(--coral)}.book.c4 .spine{background:var(--violet)}
-.book h4{font-size:.98rem;font-weight:700;margin-bottom:4px;line-height:1.2}
-.book .auth{font-size:.82rem;color:var(--teal);margin-bottom:6px}
-.book p{font-size:.82rem;color:var(--mute);margin:0}
-
-/* org */
-.org-top{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
-@media(max-width:640px){.org-top{grid-template-columns:1fr}}
-.brain{background:linear-gradient(150deg,var(--panel-2),var(--ink-2));border:1px solid var(--teal-dim);border-radius:14px;padding:22px}
-.brain .role{font-family:"Archivo";font-weight:800;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
-.brain h4{font-size:1.12rem;font-weight:800;margin-bottom:8px}.brain p{font-size:.88rem;color:var(--mute);margin:0}
-.org-label{text-align:center;font-family:"Archivo";font-weight:700;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-2);margin:22px 0 14px;position:relative}
-.pods{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:820px){.pods{grid-template-columns:1fr}}
-.pod{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
-.pod h5{font-family:"Archivo";font-size:.95rem;font-weight:700;margin:0 0 4px}
-.pod .type{font-size:.7rem;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
-.pod ul{margin:0;padding-left:16px;color:var(--mute);font-size:.85rem;line-height:1.7}
-
-/* roadmap */
-.road{counter-reset:step;display:grid;gap:14px;margin-top:26px}
-.step{display:grid;grid-template-columns:52px 1fr;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;align-items:start}
-.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:"Archivo";font-weight:900;font-size:1.5rem;color:var(--teal);line-height:1}
-.step h4{font-size:1.02rem;font-weight:700;margin-bottom:4px}.step p{font-size:.88rem;color:var(--mute);margin:0}
-.step .when{font-size:.72rem;color:var(--amber);font-family:"Archivo";font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
-
-.caveats{background:rgba(255,110,91,.06);border:1px solid rgba(255,110,91,.28);border-radius:14px;padding:24px 26px;margin-top:26px}
-.caveats h4{color:var(--coral);font-size:1rem;font-weight:700;margin-bottom:12px}
-.caveats ul{margin:0;padding-left:18px;color:var(--mute);font-size:.88rem;line-height:1.7}
-
-footer{border-top:1px solid var(--line);padding:50px 0 70px;color:var(--mute-2);font-size:.84rem}
-footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
-footer b{font-family:"Archivo";color:var(--bone)}
-
-/* PATHS — módulo interactivo */
-.paths-wrap{margin-top:26px}
-.path-tabs{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;margin-bottom:20px;scrollbar-width:thin}
-.path-tab{flex:none;font-family:"Archivo";font-weight:700;font-size:.86rem;letter-spacing:.01em;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:10px 18px;cursor:pointer;white-space:nowrap;transition:all .2s ease;display:flex;align-items:center;gap:7px}
-.path-tab:hover{color:var(--bone);border-color:var(--mute-2)}
-.path-tab.active{color:var(--ink);background:var(--teal);border-color:var(--teal)}
-.path-tab .star{color:var(--amber);font-size:.9em}
-.path-tab.active .star{color:var(--ink)}
-.path-panel{background:linear-gradient(160deg,var(--panel),var(--ink-2));border:1px solid var(--line);border-radius:16px;padding:30px;position:relative;overflow:hidden}
-.path-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--line)}
-.path-head h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:8px;max-width:22ch}
-.path-verdict{font-size:.94rem;color:var(--mute);max-width:52ch;margin:0}
-.path-badge{flex:none;font-family:"Archivo";font-weight:800;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;border-radius:8px}
-.path-badge.rec{background:rgba(51,225,196,.16);color:var(--teal);border:1px solid var(--teal-dim)}
-.path-badge.comp{background:rgba(255,194,75,.14);color:var(--amber);border:1px solid rgba(255,194,75,.3)}
-.path-badge.long{background:rgba(155,140,255,.14);color:var(--violet);border:1px solid rgba(155,140,255,.3)}
-.path-badge.brand{background:rgba(255,110,91,.14);color:var(--coral);border:1px solid rgba(255,110,91,.3)}
-.path-market{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px}
-.path-market .big-num{font-family:"Archivo";font-weight:900;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--teal);letter-spacing:-.02em;line-height:1}
-.path-market .mkt-desc{font-size:.9rem;color:var(--mute);max-width:46ch}
-.path-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
-@media(max-width:680px){.path-cols{grid-template-columns:1fr}}
-.path-col h5{font-family:"Archivo";font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px;color:var(--mute-2)}
-.path-col ul{margin:0;padding-left:16px;font-size:.9rem;line-height:1.7;color:var(--bone)}
-.path-col.pros h5{color:var(--teal)}.path-col.cons h5{color:var(--coral)}
-.path-col.pros li::marker{color:var(--teal)}.path-col.cons li::marker{color:var(--coral)}
-.path-research{margin-top:20px;padding:16px 18px;background:var(--ink);border:1px dashed var(--mute-2);border-radius:10px;font-size:.88rem;color:var(--mute)}
-.path-research b{font-family:"Archivo";color:var(--amber);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px}
-.nav-links a.on{color:var(--teal)}
-
-/* ROLES — perfiles a sumar */
-.roles-intro{margin-top:30px}
-.roles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
-@media(max-width:760px){.roles{grid-template-columns:1fr}}
-.role-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;gap:15px;align-items:flex-start}
-.role-card .rn{flex:none;width:38px;height:38px;border-radius:9px;display:grid;place-items:center;font-family:"Archivo";font-weight:900;font-size:1rem;background:rgba(51,225,196,.14);color:var(--teal)}
-.role-card .rbody{flex:1;min-width:0}
-.role-card h5{font-family:"Archivo";font-size:1rem;font-weight:700;margin:0 0 4px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
-.role-when{font-family:"Archivo";font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;white-space:nowrap}
-.role-when.now{background:rgba(51,225,196,.16);color:var(--teal)}
-.role-when.soon{background:rgba(255,194,75,.16);color:var(--amber)}
-.role-when.proj{background:rgba(155,140,255,.16);color:var(--violet)}
-.role-card .how{font-size:.76rem;color:var(--mute-2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
-.role-card .saves{font-size:.86rem;color:var(--bone);margin:0}
-.role-card .saves b{color:var(--teal);font-weight:600}
-.mapbtn{display:inline-flex;align-items:center;gap:10px;font-family:"Archivo";font-weight:700;font-size:.95rem;color:var(--ink);background:var(--teal);border:none;border-radius:100px;padding:13px 24px;cursor:pointer;text-decoration:none;box-shadow:0 0 24px rgba(51,225,196,.3);transition:transform .2s ease,box-shadow .2s ease}
-.mapbtn:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 6px 30px rgba(51,225,196,.45)}
-.mapbtn .arrow{font-size:1.1em}
-
-/* SIMULADOR de ingresos */
-.calc{display:grid;grid-template-columns:1fr .92fr;gap:18px;margin-top:26px}
-@media(max-width:760px){.calc{grid-template-columns:1fr}}
-.calc-controls{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
-.calc-group{margin-bottom:22px}.calc-group:last-child{margin-bottom:0}
-.calc-group .ttl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;gap:10px}
-.calc-group .ttl h5{font-family:"Archivo";font-size:.95rem;font-weight:700;margin:0}
-.calc-group .ttl .badge{font-size:.64rem;font-family:"Archivo";font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-2)}
-.calc-row{margin-bottom:15px}.calc-row:last-child{margin-bottom:0}
-.calc-row label{display:flex;justify-content:space-between;font-size:.84rem;color:var(--mute);margin-bottom:8px}
-.calc-row label b{color:var(--teal);font-family:"Archivo";font-variant-numeric:tabular-nums;font-weight:700}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:100px;background:var(--line);outline:none;accent-color:var(--teal);margin:0}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--teal);cursor:pointer;box-shadow:0 0 12px rgba(51,225,196,.5);border:3px solid var(--ink-2)}
-input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid var(--ink-2)}
-.calc-result{background:linear-gradient(160deg,var(--panel-2),var(--ink-2));border:1px solid var(--teal-dim);border-radius:14px;padding:26px;display:flex;flex-direction:column;justify-content:center}
-.calc-result .rlabel{font-family:"Archivo";font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
-.calc-result .rbig{font-family:"Archivo";font-weight:900;font-size:clamp(2.2rem,7vw,3.2rem);color:var(--teal);letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
-.calc-result .rbig small{font-size:.36em;color:var(--mute);font-weight:700}
-.calc-result .rsub{display:flex;gap:24px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);flex-wrap:wrap}
-.calc-result .rsub b{display:block;font-family:"Archivo";font-weight:800;font-size:1.3rem;color:var(--bone);font-variant-numeric:tabular-nums}
-.calc-result .rsub span{font-size:.76rem;color:var(--mute)}
-.calc-note{font-size:.78rem;color:var(--mute-2);margin-top:16px}
-
-/* MÓVIL — optimización para iPhone y pantallas pequeñas */
-@media(max-width:600px){
-  .wrap{padding:0 16px}
-  .section{padding:56px 0}
-  .eyebrow{margin-bottom:14px;font-size:.68rem;letter-spacing:.2em}
-  h2.big{font-size:clamp(1.7rem,7.4vw,2.3rem);margin-bottom:14px}
-  .lead{font-size:1rem}
-  .hero{padding:34px 0 48px}
-  .hero h1{font-size:clamp(2.2rem,10.5vw,3rem);margin-bottom:20px}
-  .hero .sub{font-size:1.02rem;margin-bottom:26px}
-  .hero .glow{width:360px;height:360px;right:-120px}
-  .nav-in{padding:11px 16px}
-  nav .brand small{display:none}
-  .namebox{width:100%}
-  .thesis{padding:22px 20px}.thesis .q{font-size:1.12rem}
-  .qbox{padding:22px 20px}.qbox .q{font-size:1.1rem}
-  .statstrip div{padding:16px 14px}
-  .statstrip b{font-size:1.7rem}
-  .card{padding:20px}
-  .chartbox{padding:18px}
-  .chart-h{height:210px}
-  .path-panel{padding:20px 16px}
-  .path-head{gap:12px}
-  .path-head h3{font-size:1.4rem}
-  .path-market .big-num{font-size:1.9rem}
-  .path-tab{padding:12px 16px;font-size:.84rem}
-  .mapbtn{width:100%;justify-content:center;padding:14px 20px}
-  .law,.zone,.voice,.book,.pod,.brain,.motor,.diff,.role-card,.step{padding:18px}
-  .roles{gap:12px}
-  .thesis,.qbox{border-radius:12px}
-}
-@media(max-width:600px){.path-tabs,.wrap-scroll{-webkit-overflow-scrolling:touch}}
-
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(51,225,196,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(51,225,196,.035) 1px,transparent 1px);background-size:46px 46px;display:flex;flex-direction:column}
+h1,h2,h3{font-family:"Archivo",sans-serif;margin:0;line-height:1.05;letter-spacing:-.02em}
+p{margin:0 0 1em}a{color:inherit;text-decoration:none}
+::selection{background:var(--teal);color:var(--ink)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:960px;margin:0 auto;padding:0 22px}
+.center{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 0}
+.glow{position:fixed;left:50%;top:30%;transform:translateX(-50%);width:640px;height:520px;max-width:120vw;background:radial-gradient(circle,rgba(51,225,196,.14),transparent 60%);pointer-events:none;z-index:0}
+/* LOGIN */
+.gate{position:relative;z-index:2;width:100%;max-width:420px;text-align:center}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Archivo";font-weight:900;font-size:1.3rem;margin-bottom:28px}
+.brand .mk{width:13px;height:13px;background:var(--teal);border-radius:3px;box-shadow:0 0 14px var(--teal)}
+.gate h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:900;margin-bottom:10px}
+.gate p.sub{color:var(--mute);margin-bottom:28px}
+.field{display:flex;flex-direction:column;gap:12px}
+input[type=password],input[type=text]{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 18px;color:var(--bone);font-family:"Inter";font-size:1.05rem;text-align:center;letter-spacing:.02em}
+input::placeholder{color:var(--mute-2)}
+.btn{font-family:"Archivo";font-weight:800;font-size:1rem;color:var(--ink);background:var(--teal);border:none;border-radius:12px;padding:15px 24px;cursor:pointer;box-shadow:0 0 26px rgba(51,225,196,.32);transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(51,225,196,.45)}
+.err{color:var(--coral);font-size:.9rem;margin-top:14px;min-height:1.2em;opacity:0;transition:opacity .2s ease}
+.err.show{opacity:1}
+.hint{margin-top:26px;font-size:.8rem;color:var(--mute-2)}
+/* VIEWS */
+.view{display:none;position:relative;z-index:2;width:100%;padding:52px 0 72px}
+.view.active{display:block;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.vhead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.hello{font-family:"Archivo";font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.view h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;max-width:18ch;margin-bottom:12px}
+.view .vlead{color:var(--mute);font-size:1.08rem;max-width:52ch;margin-bottom:34px}
+.logout{flex:none;font-family:"Archivo";font-weight:700;font-size:.8rem;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:9px 16px;cursor:pointer;white-space:nowrap}
+.logout:hover{border-color:var(--mute-2)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.c{display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s ease,transform .2s ease}
+.c:hover{border-color:var(--teal);transform:translateY(-3px)}
+.c.feat{background:linear-gradient(160deg,var(--panel-2),var(--ink-2));border-color:var(--teal-dim,#1f8f80)}
+.c.span{grid-column:1/-1}
+.c .ic{font-size:1.7rem;display:block;margin-bottom:12px}
+.c h3{font-size:1.2rem;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.c .pill{font-family:"Archivo";font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:100px;background:rgba(51,225,196,.16);color:var(--teal)}
+.c p{color:var(--mute);font-size:.94rem;margin:0}
+.c .go{color:var(--teal);font-family:"Archivo";font-weight:700;font-size:.85rem;margin-top:12px;display:inline-block}
+footer{position:relative;z-index:2;text-align:center;color:var(--mute-2);font-size:.82rem;padding:24px 0 36px}
+@media(max-width:600px){.wrap{padding:0 18px}.c{padding:20px}}
+.theme-juliana{--teal:#FF8FC7}
+.theme-juliana .glow{background:radial-gradient(circle,rgba(255,143,199,.18),transparent 60%)}
+.theme-juliana body,.theme-juliana{background-image:linear-gradient(rgba(255,143,199,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,143,199,.05) 1px,transparent 1px)}
+.theme-juliana ::selection{background:#FF8FC7;color:#2a0d1c}
+.jl-chick{position:fixed;width:50px;height:50px;z-index:1;opacity:.55;pointer-events:none;animation:jlbob 3.4s ease-in-out infinite}
+@keyframes jlbob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-9px) rotate(4deg)}}
+@media(max-width:600px){.jl-chick{width:40px;height:40px;opacity:.45}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.jl-chick{animation:none}}
 </style>
 </head>
 <body>
-<div id="progress"></div>
+<span class="glow"></span>
 
-<nav>
-  <div class="nav-in">
-    <div class="brand"><span class="dot"></span>DOSSIER · 2027 <small>estrategia interna</small></div>
-    <div class="nav-links">
-      <a href="#caminos">Caminos</a><a href="#tesis">Tesis</a><a href="#ramas">Ramas</a><a href="#nucleo">Núcleo</a><a href="#timing">Timing</a>
-      <a href="#mercado">Mercado</a><a href="#leyes">Leyes</a><a href="#ia">IA</a><a href="#nichos">Nichos</a>
-      <a href="#fusa">Fusagasugá</a><a href="#tarifas">Tarifas</a><a href="#calc">Simulador</a><a href="#voces">Voces</a><a href="#equipo">Equipo</a><a href="#fundamentos">Fundamentos</a><a href="#difusion">Difusión</a><a href="#ruta">Ruta</a><a href="fusagasuga.html" style="color:var(--amber)">Fusa ↗</a><a href="mapa.html" target="_blank" rel="noopener" style="color:var(--teal)">Mapa ↗</a>
+<!-- LOGIN -->
+<div class="center" id="gate-wrap">
+  <div class="gate" id="gate">
+    <div class="brand"><span class="mk"></span>[ Nombre ]</div>
+    <h1>Bienvenido</h1>
+    <p class="sub">Escribe tu clave para ver lo que te corresponde.</p>
+    <div class="field">
+      <input type="password" id="pass" placeholder="Tu clave" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">
+      <button class="btn" id="enter">Entrar</button>
     </div>
+    <div class="err" id="err">Esa clave no es correcta. Intenta de nuevo.</div>
+    <div class="hint">Acceso privado del proyecto.</div>
   </div>
-</nav>
+</div>
 
-<!-- HERO -->
-<header class="hero">
-  <span class="glow"></span>
-  <div class="wrap hero-inner">
-    <div class="tag-row">
-      <span class="tag live">Ventana abierta · elección 31·10·2027</span>
-      <span class="tag">Bogotá</span><span class="tag">Creativo + Legal + Político</span>
-    </div>
-    <h1 id="heroTitle">Producimos las campañas <span class="hl">y las blindamos.</span></h1>
-    <p class="sub">Producción audiovisual de alto nivel, estrategia digital y respaldo legal-electoral en una sola casa. Todo lo investigado, reunido para decidir juntos.</p>
-    <div class="namebox">
-      <b>[ nombre de la empresa — por definir ]</b>
-      <span>Siguiente paso: naming. BASHI queda como marca personal creativa.</span>
-    </div>
-    <div style="margin-bottom:38px;display:flex;flex-wrap:wrap;gap:12px"><a href="mapa.html" target="_blank" rel="noopener" class="mapbtn">Mapa mental interactivo <span class="arrow">↗</span></a><a href="fusagasuga.html" class="mapbtn" style="background:var(--amber);box-shadow:0 0 24px rgba(255,194,75,.3)">Fusagasugá a fondo <span class="arrow">↗</span></a></div>
-    <div class="hero-grid">
-      <div class="thesis"><p class="q">Dos personas como cerebro —clientes, estrategia y marca— y un equipo que ejecuta por proyecto. Un motor político con fecha y un motor comercial de todos los meses.</p></div>
-      <div class="countdown">
-        <h4>Cuenta regresiva electoral</h4>
-        <div class="date">Elección regional · 31 de octubre de 2027</div>
-        <div class="clock">
-          <div><b id="cd-d">—</b><span>días</span></div><div><b id="cd-h">—</b><span>horas</span></div>
-          <div><b id="cd-m">—</b><span>min</span></div><div><b id="cd-s">—</b><span>seg</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="statstrip">
-      <div><b class="c-teal" data-target="3.04" data-prefix="$" data-decimals="2" data-suffix=" B">$3,04 B</b><small>en publicidad digital en Colombia (2025): 59% de todos los medios</small></div>
-      <div><b class="c-teal" data-target="32.1" data-decimals="1" data-suffix="%">32,1%</b><small>del gasto digital es video: el formato líder, y el que más crece</small></div>
-      <div><b class="c-amber">31·10·27</b><small>elección: alcaldes, gobernadores, concejos, JAL y asambleas</small></div>
-      <div><b class="c-amber" data-target="3.4" data-decimals="1" data-suffix="%">3,4%</b><small>de candidaturas reportó su financiación a tiempo en 2023: el hueco</small></div>
-    </div>
+<!-- VISTA JULIANA -->
+<section class="view" id="view-juliana"><div class="wrap">
+  <div class="vhead">
+    <div><div class="hello">Hola, Juliana</div><h2>La mirada de Fusa</h2></div>
+    <button class="logout" data-logout>Salir</button>
   </div>
-</header>
-
-<!-- CAMINOS -->
-<section class="section" id="caminos">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">◆</span> Herramienta · elige el camino</div>
-    <h2 class="big reveal">¿Qué negocio construimos?</h2>
-    <p class="lead reveal">Toca cada camino para ver su mercado, sus clientes, lo bueno, lo malo, qué recursos pide y mi recomendación. Todas las opciones sobre la mesa, con datos reales de Colombia.</p>
-    <div class="paths-wrap reveal">
-      <div class="path-tabs" id="pathTabs" role="tablist"></div>
-      <div class="path-panel" id="pathPanel" aria-live="polite"></div>
-    </div>
+  <p class="vlead">Todo lo tuyo: el mercado de Fusagasugá a fondo y la rama de tecnología para avicultores que propusiste.</p>
+  <div class="cards">
+    <a class="c feat span" href="fusagasuga.html?for=juliana"><span class="ic">🐥</span><h3>Fusagasugá a fondo <span class="pill">Empieza aquí</span></h3><p>Economía, avicultura, nichos, el mercado político 2027 y el plan de cómo llegamos a las cifras.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="fusagasuga.html?for=juliana#agtech"><span class="ic">🐔</span><h3>Tecnología para avicultores</h3><p>La rama nueva: digitalizar las granjas de Fusa. El dolor, la solución y el mercado.</p><span class="go">Ver la rama →</span></a>
+    <a class="c" href="dossier.html?for=juliana"><span class="ic">📊</span><h3>El proyecto completo</h3><p>Todo el análisis del negocio, por si quieres ver el panorama entero.</p><span class="go">Abrir dossier →</span></a>
   </div>
-</section>
+</div></section>
 
-<!-- TESIS -->
-<section class="section" id="tesis">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">00</span> La tesis</div>
-    <h2 class="big reveal">Difícil de copiar</h2>
-    <p class="lead reveal">Un creativo que produce y un abogado con vocación política. Casi nadie tiene las dos cabezas. Ahí está el núcleo.</p>
-    <div class="grid g3 stag">
-      <div class="card"><div class="kpi">01</div><h3>El creativo produce</h3><p>Video, motion, IA y foto. La mitad de lo que una campaña o una marca necesita, ya lo sabes hacer.</p></div>
-      <div class="card"><div class="kpi">02</div><h3>El abogado blinda</h3><p>Derecho electoral, topes, propaganda, rendición de cuentas. Casi ninguna productora chica lo maneja.</p></div>
-      <div class="card"><div class="kpi">03</div><h3>Los dos deciden</h3><p>Ustedes son el cerebro: clientes, estrategia y marca. La ejecución se delega. Se cobra bien.</p></div>
-    </div>
+<!-- VISTA JULIAN -->
+<section class="view" id="view-julian"><div class="wrap">
+  <div class="vhead">
+    <div><div class="hello">Hola, Julián</div><h2>Directo al punto</h2></div>
+    <button class="logout" data-logout>Salir</button>
   </div>
-</section>
-
-<!-- RAMAS -->
-<section class="section" id="ramas">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">01</span> Mapa de ramas</div>
-    <h2 class="big reveal">Un tronco, tres ramas</h2>
-    <p class="lead reveal">No hacer quince cosas a la vez: un núcleo fuerte, y que las demás líneas le vendan al mismo cliente.</p>
-    <div class="trunk reveal"><span class="badge">Tronco</span><b>Estudio creativo + estratégico + legal</b></div>
-    <div class="branches stag">
-      <div class="branch creative"><div class="h"><div class="ic">C</div><h4>Creativo</h4></div><ul><li>Video, reels, documentales</li><li>Motion + imagen con IA</li><li>Fotografía y producto</li><li>Branding y web</li><li>Contenido para pauta</li></ul><div class="tagline">Lo que ya sabes hacer</div></div>
-      <div class="branch legal"><div class="h"><div class="ic">L</div><h4>Legal</h4></div><ul><li>Cumplimiento electoral</li><li>Contratos y derechos</li><li>Registro de marca (SIC)</li><li>Marketing jurídico</li><li>Estrategia y relato</li></ul><div class="tagline">Lo que aporta tu socio</div></div>
-      <div class="branch political"><div class="h"><div class="ic">P</div><h4>Político</h4></div><ul><li>Producción de campaña</li><li>Redes y pauta segmentada</li><li>Material POP y web</li><li>Media training y crisis</li><li>Marketing de gobierno</li></ul><div class="tagline">El cruce donde está el oro</div></div>
-    </div>
+  <p class="vlead">Lo que te interesa: la propuesta para el cliente y la parte dura de campañas y cifras. Sin rodeos.</p>
+  <div class="cards">
+    <a class="c feat span" href="propuesta.html"><span class="ic">🎯</span><h3>Propuesta comercial <span class="pill">Lo que ve el cliente</span></h3><p>Corta y vendedora: qué ofrecemos y cómo agendan una cita. Al punto.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="fusagasuga.html#politico"><span class="ic">🗳️</span><h3>Campañas y cifras en Fusa</h3><p>El mercado electoral 2027 y cómo, en la práctica, llegamos a los números.</p><span class="go">Ver el mercado →</span></a>
+    <a class="c" href="dossier.html"><span class="ic">📋</span><h3>El dossier completo</h3><p>El análisis interno con todo el detalle: legal, tarifas, equipo y ruta.</p><span class="go">Abrir dossier →</span></a>
   </div>
-</section>
+</div></section>
 
-<!-- NUCLEO -->
-<section class="section" id="nucleo">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">02</span> El núcleo</div>
-    <h2 class="big reveal">Dos motores, no uno</h2>
-    <p class="lead reveal">Lo comercial es la caja de todos los meses. Lo político es el pico con fecha. El primero financia al segundo.</p>
-    <div class="motors stag">
-      <div class="motor com"><div class="k">Motor 1 · ahora y siempre</div><h4>Contenido para negocios</h4><p>Reels, foto y piezas para pauta a fee mensual. Ciclo corto, ingreso recurrente. Arranca ya.</p><div class="tags"><span>Estética</span><span>Gastronomía</span><span>Inmobiliario</span><span>Marcas</span></div></div>
-      <div class="motor pol"><div class="k">Motor 2 · pico 2027</div><h4>Producción política + cumplimiento</h4><p>"Contenido que gana y no genera sanciones." Concejo, JAL y alcaldías pequeñas y medianas.</p><div class="tags"><span>Concejo/JAL</span><span>Alcaldías 25k–100k</span><span>Gobierno</span></div></div>
-    </div>
-    <div class="qbox reveal"><p class="q">No arrancar como consultora política integral: ese terreno ya lo dominan firmas con trayectoria. La ventaja está en la ejecución rápida, la IA y el cumplimiento.</p></div>
+<!-- VISTA COMPLETA -->
+<section class="view" id="view-full"><div class="wrap">
+  <div class="vhead">
+    <div><div class="hello">Modo completo</div><h2>Todo el proyecto</h2></div>
+    <button class="logout" data-logout>Salir</button>
   </div>
-</section>
-
-<!-- TIMING -->
-<section class="section" id="timing">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">03</span> El reloj electoral</div>
-    <h2 class="big reveal">La ventana con fecha</h2>
-    <p class="lead reveal">El calendario arranca el 31 de octubre de 2026. El periodo para vender va de noviembre de 2026 a julio de 2027.</p>
-    <div class="timeline">
-      <div class="tl-item key tl"><div class="tl-date">31 OCT 2026</div><div class="tl-body"><h4>Arranca el calendario electoral</h4><p>Se abre el registro de grupos por firmas e inscripción de cédulas. Primer pico de identidad y legal.</p></div></div>
-      <div class="tl-item tl"><div class="tl-date">Nov 26 – Jul 27</div><div class="tl-body"><h4>Precampaña: divulgación</h4><p>Darse a conocer, sin pedir el voto. El cliente paga para "existir": marca, documentales, trayectoria.</p></div></div>
-      <div class="tl-item tl"><div class="tl-date">~31 JUL 2027</div><div class="tl-body"><h4>Arranca la propaganda</h4><p>Ya se pide el voto (3 meses antes). Pico de producción: vallas, POP, spots.</p></div></div>
-      <div class="tl-item tl"><div class="tl-date">~6 SEP 2027</div><div class="tl-body"><h4>Cierre de inscripción</h4><p>55 días antes de la elección. Después, revisión de inhabilidades.</p></div></div>
-      <div class="tl-item key tl"><div class="tl-date">31 OCT 2027</div><div class="tl-body"><h4>Elección regional</h4><p>Alcaldes, gobernadores, diputados, concejales y ediles.</p></div></div>
-      <div class="tl-item tl"><div class="tl-date">1 ENE 2028</div><div class="tl-body"><h4>Posesión · 2028–2031</h4><p>Los ganadores necesitan comunicación 4 años: marketing de gobierno.</p></div></div>
-    </div>
+  <p class="vlead">Acceso a las cuatro piezas del proyecto.</p>
+  <div class="cards">
+    <a class="c" href="dossier.html"><span class="ic">📊</span><h3>Dossier interno</h3><p>El análisis completo del negocio.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="fusagasuga.html"><span class="ic">🌿</span><h3>Fusagasugá a fondo</h3><p>La plaza, la avicultura y el plan local.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="propuesta.html"><span class="ic">🎯</span><h3>Propuesta comercial</h3><p>La página de ventas para clientes.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="mapa.html"><span class="ic">🗺️</span><h3>Mapa mental</h3><p>Todo el negocio conectado, interactivo.</p><span class="go">Abrir →</span></a>
   </div>
-</section>
+</div></section>
 
-<!-- MERCADO -->
-<section class="section" id="mercado">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">04</span> El mercado en datos</div>
-    <h2 class="big reveal">Dónde está la plata</h2>
-    <p class="lead reveal">La publicidad digital ya es más de la mitad de la inversión en medios. Y el video —lo que ustedes producen— lidera.</p>
-    <div class="grid g2" style="margin-top:26px">
-      <div class="chartbox reveal"><h4>Inversión en publicidad digital · Colombia</h4><div class="cap">Total anual, billones de COP</div><div class="chart-h"><canvas id="chInvest"></canvas></div><div class="src">Fuente: IAB Colombia, reporte de inversión digital 2025.</div></div>
-      <div class="chartbox reveal"><h4>Reparto del gasto digital por formato</h4><div class="cap">Segundo trimestre de 2026 · %</div><div class="chart-h"><canvas id="chFormat"></canvas></div><div class="src">Fuente: IAB Colombia, Q2 2026.</div></div>
-    </div>
-    <div class="grid g2" style="margin-top:18px">
-      <div class="chartbox reveal"><h4>Lo que más crece (12 meses)</h4><div class="cap">Variación anual · %</div><div class="chart-h"><canvas id="chGrowth"></canvas></div><div class="src">Fuente: IAB Colombia 2025–2026.</div></div>
-      <div class="chartbox reveal"><h4>Topes de campaña · referencia 2023</h4><div class="cap">Cuánto puede gastar una campaña, millones de COP (escala log)</div><div class="chart-h"><canvas id="chTopes"></canvas></div><div class="src">Fuente: CNE, topes 2023 por censo del municipio.</div></div>
-    </div>
-
-    <div class="reveal" style="margin-top:60px;padding-top:34px;border-top:1px solid var(--line)">
-      <div class="eyebrow"><span class="chapter-no">◆</span> El país digital</div>
-      <h2 class="big" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">37,7 millones en redes</h2>
-      <p class="lead">Colombia vive pegada a la pantalla: es de los países que más tiempo pasa en redes del mundo. Ahí buscan y compran tus clientes.</p>
-    </div>
-    <div class="statstrip">
-      <div><b class="c-teal" data-target="41.7" data-decimals="1" data-suffix="M">41,7M</b><small>usuarios de internet (oct 2025): 77,8% de penetración</small></div>
-      <div><b class="c-teal" data-target="37.7" data-decimals="1" data-suffix="M">37,7M</b><small>identidades activas en redes: el 93% de los adultos</small></div>
-      <div><b class="c-amber" data-target="25" data-decimals="0" data-suffix="h">25h</b><small>por semana en redes por persona: Colombia, nº 19 del mundo</small></div>
-      <div><b class="c-amber" data-target="65" data-decimals="0" data-prefix="+" data-suffix="%">+65%</b><small>creció el comercio social en 2025: se compra desde las redes</small></div>
-    </div>
-    <div class="grid g2" style="margin-top:18px">
-      <div class="chartbox reveal"><h4>Usuarios por plataforma · Colombia</h4><div class="cap">Millones de usuarios, cierre de 2025</div><div class="chart-h"><canvas id="chRedes"></canvas></div><div class="src">Fuente: DataReportal / We Are Social / NapoleonCat 2026.</div></div>
-      <div class="chartbox reveal" style="display:flex;flex-direction:column;justify-content:center">
-        <h4>Por qué te importa</h4>
-        <p style="color:var(--mute);font-size:.94rem;margin-top:12px">TikTok llega a 37,7M de adultos e Instagram a más de 21M. El video corto es el rey y su penetración creció casi 25% en un año. Cada negocio necesita alimentar ese feed, y pocos lo hacen bien.</p>
-        <p style="color:var(--mute);font-size:.94rem;margin:0">Traducción para el negocio: demanda de contenido constante, en el formato que ustedes dominan.</p>
-      </div>
-    </div>
-
-    <div class="reveal" style="margin-top:60px;padding-top:34px;border-top:1px solid var(--line)">
-      <div class="eyebrow"><span class="chapter-no">◆</span> El tejido empresarial</div>
-      <h2 class="big" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">Medio millón de clientes posibles</h2>
-      <p class="lead">Bogotá y su región son un océano de negocios pequeños que necesitan quién les haga el contenido. Ese es el mercado del motor comercial.</p>
-    </div>
-    <div class="grid g4 stag" style="margin-top:26px">
-      <div class="card"><div class="kpi" data-target="493825" data-decimals="0">493.825</div><h3 style="font-size:1rem">Empresas activas</h3><p>En Bogotá y los 58 municipios de su región (2025).</p></div>
-      <div class="card"><div class="kpi">99,3%</div><h3 style="font-size:1rem">Son mipymes</h3><p>Micro, pequeñas y medianas: el cliente ideal del contenido.</p></div>
-      <div class="card"><div class="kpi" data-target="83158" data-decimals="0">83.158</div><h3 style="font-size:1rem">Nacieron en 2025</h3><p>+6,2% frente a 2024: cada una necesita marca y redes.</p></div>
-      <div class="card"><div class="kpi">44,6%</div><h3 style="font-size:1rem">En 5 localidades</h3><p>Suba, Usaquén, Kennedy, Chapinero y Engativá.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- LEYES -->
-<section class="section" id="leyes">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">05</span> Las reglas del juego</div>
-    <h2 class="big reveal">Las leyes que hay que dominar</h2>
-    <p class="lead reveal">El respaldo legal es el diferencial. Estas son las normas reales que rigen una campaña y su comunicación en Colombia.</p>
-    <div class="laws stag">
-      <div class="law"><div class="no">Ley 130 de 1994</div><h4>Estatuto básico de partidos</h4><p>Define la propaganda electoral y prohíbe la publicidad pagada en TV salvo en elecciones presidenciales. Regula la publicidad exterior (vallas).</p><div class="arts"><span>Art. 24</span><span>Art. 26</span><span>Art. 29</span></div></div>
-      <div class="law"><div class="no">Ley 1475 de 2011</div><h4>Estatutaria de campañas</h4><p>Define la campaña electoral, ordena una cuenta única que abre el gerente, fija el número de vallas y permite propaganda en espacio público solo 3 meses antes.</p><div class="arts"><span>Art. 25</span><span>Art. 34</span><span>Art. 35</span><span>Art. 37</span></div></div>
-      <div class="law"><div class="no">Ley 1123 de 2007</div><h4>Código disciplinario del abogado</h4><p>Restringe la publicidad de abogados: solo nombre, títulos y datos básicos, sin propaganda laudatoria. Por eso el marketing jurídico debe ser educativo.</p><div class="arts"><span>Art. 31</span></div></div>
-      <div class="law"><div class="no">CONPES 4144 de 2025 · PL 043/2025</div><h4>Política y ley de IA</h4><p>Colombia ya tiene política de IA y un proyecto de ley que clasifica riesgos y exige etiquetar los deepfakes y pedir consentimiento para usar voz e imagen.</p><div class="arts"><span>Riesgos</span><span>Etiquetado</span><span>Consentimiento</span></div></div>
-    </div>
-    <div class="qbox reveal"><p class="q">Cumplir la norma no es un freno: es el producto. "Producción que cumple" es lo que casi ninguna productora chica puede ofrecer.</p></div>
-  </div>
-</section>
-
-<!-- IA -->
-<section class="section" id="ia">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">06</span> El ángulo IA</div>
-    <h2 class="big reveal">La IA, con reglas</h2>
-    <p class="lead reveal">La IA es su ventaja de velocidad y precio. Usada bien y etiquetada, también es un sello de confianza.</p>
-    <div class="ia">
-      <div class="box chance reveal"><h4>La oportunidad</h4><p>Producir más rápido y más barato con buena calidad. En Colombia todavía no hay una regla específica de IA para elecciones: quien la use con criterio, gana.</p><ul class="facts"><li>Más de 20 proyectos de ley de IA en curso; ninguno específico para lo electoral.</li><li>6 de cada 10 colombianos ya desconfían de lo que ven en internet.</li></ul></div>
-      <div class="box rule reveal"><h4>La regla de la casa</h4><p>El proyecto de ley de IA exige señalar el contenido sintético y pedir consentimiento para usar voz e imagen. La política de la empresa lo adopta desde ya.</p><ul class="facts"><li>Etiquetar siempre: "imagen generada digitalmente".</li><li>Nunca recrear a un rival ni hacer deepfakes engañosos.</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- NICHOS -->
-<section class="section" id="nichos">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">07</span> Nichos comerciales</div>
-    <h2 class="big reveal">A quién venderle primero</h2>
-    <p class="lead reveal">Por capacidad de pago, necesidad de contenido y competencia superable. La barra mide el atractivo para arrancar.</p>
-    <div class="niche">
-      <div class="niche-row top"><div class="niche-rank">1</div><div class="niche-info"><h4>Estética y salud</h4><p>~540.000 procedimientos estéticos en 2025. Alto margen, contenido mediocre.</p></div><div class="niche-score"><span class="lab">Atractivo</span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span></div></div>
-      <div class="niche-row"><div class="niche-rank">2</div><div class="niche-info"><h4>Gastronomía</h4><p>Volumen enorme en Bogotá, renuevan contenido siempre.</p></div><div class="niche-score"><span class="lab">Atractivo</span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="0"></span></div></div>
-      <div class="niche-row"><div class="niche-rank">3</div><div class="niche-info"><h4>Inmobiliario</h4><p>Constructoras y proyectos. Tickets altos por proyecto.</p></div><div class="niche-score"><span class="lab">Atractivo</span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="0"></span></div></div>
-      <div class="niche-row"><div class="niche-rank">4</div><div class="niche-info"><h4>Fitness y bienestar</h4><p>Gimnasios boutique, pilates, entrenadores. Auge del autocuidado.</p></div><div class="niche-score"><span class="lab">Atractivo</span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="0"></span><span class="pip" data-on="0"></span></div></div>
-      <div class="niche-row"><div class="niche-rank">5</div><div class="niche-info"><h4>Moda y e-commerce</h4><p>Marcas que viven de foto y video. Belleza local cercana a US$351,7M.</p></div><div class="niche-score"><span class="lab">Atractivo</span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="0"></span><span class="pip" data-on="0"></span></div></div>
-      <div class="niche-row"><div class="niche-rank">6</div><div class="niche-info"><h4>Abogados y profesionales</h4><p>El nicho de tu socio. Marketing jurídico educativo (Ley 1123).</p></div><div class="niche-score"><span class="lab">Atractivo</span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="1"></span><span class="pip" data-on="0"></span><span class="pip" data-on="0"></span></div></div>
-    </div>
-    <div class="eyebrow reveal" style="margin-top:56px"><span class="chapter-no">08</span> Zonas de Bogotá</div>
-    <h2 class="big reveal" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">Dónde concentrar la cacería</h2>
-    <div class="zones stag">
-      <div class="zone"><h4>Chapinero · Zona T · Chicó · Parque 93 <span>EMPEZAR AQUÍ</span></h4><p>El epicentro: gastronomía, moda, estética y oficinas juntas.</p></div>
-      <div class="zone"><h4>Usaquén · Cedritos <span>ALTA</span></h4><p>Comercio, clínicas y restaurantes de estrato alto.</p></div>
-      <div class="zone"><h4>Calle 100 · Salitre <span>CORPORATIVO</span></h4><p>Empresas: video institucional, VSL, presentaciones.</p></div>
-      <div class="zone"><h4>Chía · Cajicá <span>NORTE</span></h4><p>Estrato alto con menos competencia de creativos buenos.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FUSAGASUGA -->
-<section class="section" id="fusa">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">09</span> Escenario Fusagasugá</div>
-    <h2 class="big reveal">La plaza intermedia</h2>
-    <p class="lead reveal">Segundo municipio de Cundinamarca, a una hora de Bogotá. Plaza chica para la competencia creativa y grande para la política: en 2023 tuvo más aspirantes a la alcaldía que cualquier otro municipio del departamento.</p>
-    <div class="statstrip">
-      <div><b class="c-teal" data-target="162844" data-decimals="0">162.844</b><small>habitantes en 2026 (DANE): 2º de Cundinamarca, tras Soacha</small></div>
-      <div><b class="c-teal" data-target="115981" data-decimals="0">115.981</b><small>potenciales votantes (censo electoral 2023); participación del 57%</small></div>
-      <div><b class="c-amber" data-target="1647" data-prefix="$" data-decimals="0" data-suffix="M">$1.647M</b><small>tope de campaña a la alcaldía en 2023 (censo 100k–250k)</small></div>
-      <div><b class="c-amber" data-target="17" data-decimals="0">17</b><small>candidatos a la alcaldía en 2023: el municipio con más aspirantes de Cundinamarca</small></div>
-    </div>
-    <div class="grid g3 stag" style="margin-top:26px">
-      <div class="card"><div class="kpi">Política</div><h3>Muchos candidatos, muchos clientes</h3><p>17 aspirantes a la alcaldía y 353 al concejo (17 curules) en 2023. Cada campaña necesita identidad, video y redes. Tope de alcaldía en el rango de $1.647M.</p></div>
-      <div class="card"><div class="kpi">Comercial</div><h3>Comercio, turismo y fincas</h3><p>El 57% de los establecimientos son comercio y el 34% servicios. Alta población flotante por turismo de fin de semana y fincas de bogotanos. Menos competencia de creativos que en la capital.</p></div>
-      <div class="card"><div class="kpi">Sumapaz</div><h3>Puerta a 10 municipios</h3><p>Es la capital de la Provincia del Sumapaz (~270.000 habitantes). Ganar Fusagasugá abre Silvania, Arbeláez, Pasca, Granada y los demás como expansión natural.</p></div>
-    </div>
-    <div class="chartbox reveal" style="margin-top:18px">
-      <h4>Candidatos a la alcaldía · Cundinamarca 2023</h4>
-      <div class="cap">Fusagasugá lideró el departamento en número de aspirantes: cada uno, un cliente potencial de campaña</div>
-      <div class="chart-h"><canvas id="chFusa"></canvas></div>
-      <div class="src">Fuente: Registraduría / El Espectador, jornada electoral del 29 de octubre de 2023.</div>
-    </div>
-    <div class="qbox reveal"><p class="q">En una plaza chica, ser el estudio que produce con calidad de ciudad grande es una ventaja enorme: menos rivales buenos y un mercado político que se renueva cada 4 años.</p></div>
-
-    <div class="reveal" style="margin-top:56px;padding-top:34px;border-top:1px solid var(--line)">
-      <h3 style="font-family:Archivo;font-weight:800;font-size:1.4rem;margin-bottom:6px">El panorama político 2027</h3>
-      <p style="color:var(--mute);font-size:.96rem;max-width:62ch">El alcalde actual no puede reelegirse: la cancha queda abierta y peleada, con todo el espectro de partidos y decenas de aspirantes. Cada uno necesita quién le produzca la campaña.</p>
-    </div>
-    <div class="grid g4 stag" style="margin-top:22px">
-      <div class="card"><div class="kpi">Abierta</div><h3 style="font-size:1rem">Sin reelección</h3><p>El alcalde 2024–2027 no continúa: alcaldía disputada desde cero.</p></div>
-      <div class="card"><div class="kpi">~16</div><h3 style="font-size:1rem">A la alcaldía en 2023</h3><p>Todo el espectro: coaliciones, Centro Democrático, U, Liberal, Pacto, Nuevo Liberalismo…</p></div>
-      <div class="card"><div class="kpi">17</div><h3 style="font-size:1rem">Curules de concejo</h3><p>La mayoría de concejales buscan repetir, más los retadores: cientos de campañas.</p></div>
-      <div class="card"><div class="kpi">+ JAL</div><h3 style="font-size:1rem">Ediles y comunales</h3><p>Otro nivel de campañas pequeñas, ideales para paquetes de entrada.</p></div>
-    </div>
-
-    <div class="reveal" style="margin-top:56px;padding-top:34px;border-top:1px solid var(--line)">
-      <div class="eyebrow"><span class="chapter-no">◆</span> Cómo llegamos a las cifras</div>
-      <h2 class="big" style="font-size:clamp(1.6rem,3.4vw,2.4rem)">El puente: del mercado a nuestra caja</h2>
-      <p class="lead">Las cifras grandes de arriba son el tamaño del mercado. Nosotros solo capturamos una fracción. Esto es lo que hay que vender en Fusa para llegar a números concretos.</p>
-    </div>
-    <div class="grid g3 stag" style="margin-top:26px">
-      <div class="card" style="border-top:3px solid var(--mute-2)">
-        <h3>Conservador</h3>
-        <p style="margin-bottom:14px">Empezando despacio, medio tiempo.</p>
-        <p style="font-size:.86rem;color:var(--bone);margin-bottom:6px"><b style="color:var(--teal)">Comercial:</b> 4 clientes × $1,2M = $4,8M/mes → ~$58M/año</p>
-        <p style="font-size:.86rem;color:var(--bone);margin-bottom:14px"><b style="color:var(--amber)">Político 2027:</b> 3 campañas chicas ≈ $18M en el ciclo</p>
-        <div style="border-top:1px solid var(--line);padding-top:12px"><span style="font-size:.74rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em">Año electoral</span><div style="font-family:Archivo;font-weight:900;font-size:1.6rem;color:var(--teal)">~$76M</div></div>
-      </div>
-      <div class="card" style="border-top:3px solid var(--teal)">
-        <h3>Realista</h3>
-        <p style="margin-bottom:14px">Con foco y el ciclo 2027 en marcha.</p>
-        <p style="font-size:.86rem;color:var(--bone);margin-bottom:6px"><b style="color:var(--teal)">Comercial:</b> 8 clientes × $1,5M = $12M/mes → ~$144M/año</p>
-        <p style="font-size:.86rem;color:var(--bone);margin-bottom:14px"><b style="color:var(--amber)">Político 2027:</b> 1 mediana + varias chicas ≈ $50M en el ciclo</p>
-        <div style="border-top:1px solid var(--line);padding-top:12px"><span style="font-size:.74rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em">Año electoral</span><div style="font-family:Archivo;font-weight:900;font-size:1.6rem;color:var(--teal)">~$194M</div></div>
-      </div>
-      <div class="card" style="border-top:3px solid var(--amber)">
-        <h3>Ambicioso</h3>
-        <p style="margin-bottom:14px">Equipo armado y una campaña grande.</p>
-        <p style="font-size:.86rem;color:var(--bone);margin-bottom:6px"><b style="color:var(--teal)">Comercial:</b> 14 clientes × $1,8M = $25,2M/mes → ~$302M/año</p>
-        <p style="font-size:.86rem;color:var(--bone);margin-bottom:14px"><b style="color:var(--amber)">Político 2027:</b> 1 alcaldía + varias de concejo ≈ $120M</p>
-        <div style="border-top:1px solid var(--line);padding-top:12px"><span style="font-size:.74rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em">Año electoral</span><div style="font-family:Archivo;font-weight:900;font-size:1.6rem;color:var(--teal)">~$422M</div></div>
-      </div>
-    </div>
-    <div class="chartbox reveal" style="margin-top:18px">
-      <h4>Ingreso proyectado en el año electoral (2027)</h4>
-      <div class="cap">Millones de COP · comercial recurrente + bolsa política del ciclo. Estimación propia para planear, no una promesa.</div>
-      <div class="chart-h"><canvas id="chEsc"></canvas></div>
-      <div class="src">Base: tarifas de mercado ya investigadas, ajustadas a la escala de Fusagasugá.</div>
-    </div>
-    <div class="qbox reveal"><p class="q">No hay que ganarse el mercado entero. Con 8 clientes fijos de contenido y un puñado de campañas en 2027, Fusa ya deja cerca de $194 millones en el año pico. A eso se llega tocando puertas, no esperando.</p></div>
-  </div>
-</section>
-
-<!-- TARIFAS -->
-<section class="section" id="tarifas">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">10</span> Tarifas</div>
-    <h2 class="big reveal">A cuánto vender</h2>
-    <p class="lead reveal">Rangos reales del mercado colombiano 2026. El punto dulce: cobrar como senior entregando como agencia grande.</p>
-    <div class="wrap-scroll reveal">
-      <table class="ptable">
-        <thead><tr><th>Proveedor</th><th>Qué incluye</th><th>Mensual</th></tr></thead>
-        <tbody>
-          <tr><td>Freelancer básico</td><td>Publicación, sin estrategia</td><td class="money">$500k–1,2M</td></tr>
-          <tr><td>Freelancer senior</td><td>Estrategia, reels, reporte</td><td class="money">$1,2–2,5M</td></tr>
-          <tr><td>Agencia pyme</td><td>Estrategia + reels + redes</td><td class="money">$1,2–3M</td></tr>
-          <tr><td>Agencia completa</td><td>Producción, pauta, equipo</td><td class="money">$3–8M+</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="grid g4 stag" style="margin-top:18px">
-      <div class="card"><div class="kpi">$850k</div><h3 style="font-size:1rem">Reel individual</h3><p>Desde, según producción.</p></div>
-      <div class="card"><div class="kpi">$1,4M</div><h3 style="font-size:1rem">Paquete mensual</h3><p>Desde, producción constante.</p></div>
-      <div class="card"><div class="kpi">$800k</div><h3 style="font-size:1rem">Foto media jornada</h3><p>Jornada completa desde $1,2M.</p></div>
-      <div class="card"><div class="kpi">$3M</div><h3 style="font-size:1rem">Video corporativo</h3><p>VSL de ventas desde $1,5M.</p></div>
-    </div>
-    <div class="two stag">
-      <div class="diff"><h4>Diferencial 1 · Velocidad por IA</h4><p>Volumen (8–12 reels/mes) a precio de 4, sin perder margen.</p></div>
-      <div class="diff"><h4>Diferencial 2 · Respaldo legal</h4><p>Contratos, derechos y contenido que cumple. Justifica cobrar más.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SIMULADOR -->
-<section class="section" id="calc">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">◆</span> Simulador de ingresos</div>
-    <h2 class="big reveal">¿Cuánto podríamos facturar?</h2>
-    <p class="lead reveal">Mueve los controles con tus clientes y tarifas reales; el cálculo se actualiza al instante. Son estimaciones para planear, no promesas.</p>
-    <div class="calc">
-      <div class="calc-controls reveal">
-        <div class="calc-group">
-          <div class="ttl"><h5>Contenido mensual (fee)</h5><span class="badge">recurrente</span></div>
-          <div class="calc-row"><label>Clientes a fee <b id="v-cf">4</b></label><input type="range" id="cf" min="0" max="20" step="1" value="4" aria-label="Clientes a fee mensual"></div>
-          <div class="calc-row"><label>Fee promedio <b id="v-cfp">$2,5 M</b></label><input type="range" id="cfp" min="1" max="5" step="0.5" value="2.5" aria-label="Fee promedio mensual"></div>
-        </div>
-        <div class="calc-group">
-          <div class="ttl"><h5>Producción por proyecto</h5><span class="badge">puntual</span></div>
-          <div class="calc-row"><label>Proyectos al mes <b id="v-pr">3</b></label><input type="range" id="pr" min="0" max="15" step="1" value="3" aria-label="Proyectos al mes"></div>
-          <div class="calc-row"><label>Precio promedio <b id="v-prp">$1,5 M</b></label><input type="range" id="prp" min="0.5" max="6" step="0.5" value="1.5" aria-label="Precio promedio por proyecto"></div>
-        </div>
-        <div class="calc-group">
-          <div class="ttl"><h5>Campañas (en temporada)</h5><span class="badge">estacional</span></div>
-          <div class="calc-row"><label>Campañas activas <b id="v-cp">0</b></label><input type="range" id="cp" min="0" max="6" step="1" value="0" aria-label="Campañas activas"></div>
-          <div class="calc-row"><label>Fee de campaña <b id="v-cpp">$6 M</b></label><input type="range" id="cpp" min="3" max="15" step="1" value="6" aria-label="Fee mensual de campaña"></div>
-        </div>
-      </div>
-      <div class="calc-result reveal">
-        <div class="rlabel">Ingreso mensual bruto</div>
-        <div class="rbig" id="r-month">$0 <small>/mes</small></div>
-        <div class="rsub">
-          <div><b id="r-year">$0</b><span>al año (bruto)</span></div>
-          <div><b id="r-net">$0</b><span>neto aprox./mes</span></div>
-        </div>
-        <p class="calc-note">Neto estimado descontando ~35% (freelancers, herramientas e impuestos). Las campañas son estacionales: no se facturan los 12 meses.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VOCES -->
-<section class="section" id="voces">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">11</span> Voces del sector</div>
-    <h2 class="big reveal">Con quién medirse</h2>
-    <p class="lead reveal">Referentes reales de la consultoría política en Colombia y el mundo. Estudiar su modelo antes de competir.</p>
-    <div class="voices stag">
-      <div class="voice"><div class="quote">"La percepción es más importante que la realidad."</div><div class="who"><div class="av">JN</div><div><b>Joseph Napolitan</b><span>Padre de la consultoría política moderna</span></div></div></div>
-      <div class="voice"><div class="quote">Estrategia + producción audiovisual en una sola casa: el modelo más cercano al de ustedes.</div><div class="who"><div class="av">JG</div><div><b>Juan Fernando Gutiérrez</b><span>El Gabinete · "Consultor Revelación 2019", ACOPOL</span></div></div></div>
-      <div class="voice"><div class="quote">El método "Campañas de Pantano": la fuerza de la campaña de tierra, casa por casa.</div><div class="who"><div class="av">FS</div><div><b>Freddy Serrano</b><span>Mejor Estratega de Tierra, ACOPOL 2019</span></div></div></div>
-      <div class="voice"><div class="quote">27 curules ganadas a 2021: la gerencia y organización de campañas también es un oficio.</div><div class="who"><div class="av">FP</div><div><b>Francy Pérez</b><span>Consultora electoral</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- BIBLIOTECA -->
-<section class="section" id="biblioteca">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">12</span> Biblioteca</div>
-    <h2 class="big reveal">Qué leer para armar la cabeza</h2>
-    <p class="lead reveal">La base teórica del oficio, de lo colombiano a los clásicos. Lectura para el socio estratega.</p>
-    <div class="books stag">
-      <div class="book c1"><div class="spine"></div><div><h4>Manual de Marketing Político</h4><div class="auth">La Agencia · Ed. Externado</div><p>Cómo construir una campaña exitosa en Colombia, paso a paso.</p></div></div>
-      <div class="book c2"><div class="spine"></div><div><h4>Manual de Marketing Político</h4><div class="auth">Luis Costa Bonino</div><p>Clásico latinoamericano. PDF gratuito del autor.</p></div></div>
-      <div class="book c3"><div class="spine"></div><div><h4>The Election Game</h4><div class="auth">Joseph Napolitan</div><p>El texto fundacional de la consultoría de campañas.</p></div></div>
-      <div class="book c4"><div class="spine"></div><div><h4>El arte de ganar</h4><div class="auth">Durán Barba y Nieto</div><p>Campañas latinoamericanas modernas y opinión pública.</p></div></div>
-      <div class="book c1"><div class="spine"></div><div><h4>No pienses en un elefante</h4><div class="auth">George Lakoff</div><p>Encuadres: cómo el lenguaje define el debate.</p></div></div>
-      <div class="book c2"><div class="spine"></div><div><h4>Words That Work</h4><div class="auth">Frank Luntz</div><p>No es lo que dices, es lo que la gente escucha.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- EQUIPO -->
-<section class="section" id="equipo">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">13</span> Modelo de equipo</div>
-    <h2 class="big reveal">Ustedes el cerebro</h2>
-    <p class="lead reveal">Boutique + red. Dos socios que consiguen clientes, hacen estrategia y ponen la marca; una red que ejecuta por proyecto.</p>
-    <div class="org-top stag">
-      <div class="brain"><div class="role">Socio · dirección creativa</div><h4>El creativo</h4><p>Dirección, estándar de calidad, producción clave, imagen con IA. La cara del "cómo se ve".</p></div>
-      <div class="brain"><div class="role">Socio · estrategia y legal</div><h4>El abogado / estratega</h4><p>Comercial, relato, cumplimiento y contratos. La cara del "cómo se gana y no se sanciona".</p></div>
-    </div>
-    <div class="org-label reveal">Equipo por proyecto — se delega y se paga por entrega</div>
-    <div class="pods stag">
-      <div class="pod"><h5>Producción</h5><div class="type">Freelance</div><ul><li>Editor / motion</li><li>Camarógrafo</li><li>Fotógrafo</li></ul></div>
-      <div class="pod"><h5>Digital</h5><div class="type">Freelance</div><ul><li>Community manager</li><li>Pauta / ads</li><li>Diseñador</li></ul></div>
-      <div class="pod"><h5>Aliados</h5><div class="type">Por servicio</div><ul><li>Abogado electoral titulado</li><li>Contador (Cuentas Claras)</li><li>Firma de encuestas</li></ul></div>
-    </div>
-    <div class="roles-intro reveal">
-      <h2 class="big" style="font-size:clamp(1.5rem,3.2vw,2.2rem)">Perfiles clave a sumar</h2>
-      <p class="lead">La regla: sumen primero lo que más horas les quita del trabajo que sí saben hacer. En orden de prioridad.</p>
-    </div>
-    <div class="roles stag">
-      <div class="role-card"><div class="rn">1</div><div class="rbody"><h5>Editor / motion <span class="role-when now">Ahora</span></h5><div class="how">Freelance</div><p class="saves"><b>Te libera</b> las horas de edición, para que dirijas y vendas en vez de estar en la timeline.</p></div></div>
-      <div class="role-card"><div class="rn">2</div><div class="rbody"><h5>Community manager <span class="role-when now">Ahora</span></h5><div class="how">Freelance</div><p class="saves"><b>Te libera</b> el día a día de publicar, responder y calendarizar por cada cliente.</p></div></div>
-      <div class="role-card"><div class="rn">3</div><div class="rbody"><h5>Contador / revisor fiscal <span class="role-when now">Ahora</span></h5><div class="how">Aliado</div><p class="saves"><b>Te libera</b> de impuestos, Régimen Simple y Cuentas Claras: nada de líos con la DIAN ni el CNE.</p></div></div>
-      <div class="role-card"><div class="rn">4</div><div class="rbody"><h5>Especialista en pauta (ads) <span class="role-when soon">Pronto</span></h5><div class="how">Freelance</div><p class="saves"><b>Te libera</b> la optimización de campañas: es lo que hace que el cliente vea resultados y pague más.</p></div></div>
-      <div class="role-card"><div class="rn">5</div><div class="rbody"><h5>Diseñador gráfico <span class="role-when soon">Pronto</span></h5><div class="how">Freelance</div><p class="saves"><b>Te libera</b> identidades, piezas estáticas y material POP mientras tú te enfocas en el video.</p></div></div>
-      <div class="role-card"><div class="rn">6</div><div class="rbody"><h5>Copywriter / estratega <span class="role-when soon">Pronto</span></h5><div class="how">Freelance</div><p class="saves"><b>Te libera</b> los guiones, los mensajes y el relato: la palabra que acompaña a la imagen.</p></div></div>
-      <div class="role-card"><div class="rn">7</div><div class="rbody"><h5>Abogado electoral titulado <span class="role-when soon">Para 2027</span></h5><div class="how">Aliado</div><p class="saves"><b>Te libera</b> firmar y blindar lo que el socio aún no puede: cumplimiento y contratos de campaña.</p></div></div>
-      <div class="role-card"><div class="rn">8</div><div class="rbody"><h5>Camarógrafo + fotógrafo <span class="role-when proj">Por proyecto</span></h5><div class="how">Por proyecto</div><p class="saves"><b>Te libera</b> cubrir rodajes grandes sin cargar con planta fija ni equipo parado.</p></div></div>
-      <div class="role-card"><div class="rn">9</div><div class="rbody"><h5>Comercial / closer <span class="role-when proj">Al escalar</span></h5><div class="how">Socio de crecimiento</div><p class="saves"><b>Te libera</b> salir a conseguir y cerrar clientes, para que ustedes solo produzcan y dirijan.</p></div></div>
-    </div>
-    <div class="caveats reveal" style="background:rgba(255,194,75,.06);border-color:rgba(255,194,75,.28)">
-      <h4 style="color:var(--amber)">Nota legal importante</h4>
-      <ul>
-        <li>El socio aún no tiene tarjeta profesional: mientras tanto, un abogado electoral titulado firma. El servicio propio se vende como "protocolo de cumplimiento y gestión documental".</li>
-        <li>Separar marcas: la creativa comercial aparte de la política, para no atar públicamente al socio a partidos si quiere aspirar después.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- SAS -->
-<section class="section" id="sas">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">14</span> Cómo montarla</div>
-    <h2 class="big reveal">SAS: la figura</h2>
-    <p class="lead reveal">Sin capital mínimo, responsabilidad limitada, documento privado, y admite agregar ramas sin rehacer nada.</p>
-    <div class="grid g3 stag" style="margin-top:26px">
-      <div class="card"><div class="kpi">$0</div><h3>Capital mínimo</h3><p>Definen el capital y el reparto de acciones (60/40, 50/50…).</p></div>
-      <div class="card"><div class="kpi">~$100–150k</div><h3>Costo de constituir</h3><p>En la Cámara de Comercio; el socio redacta los estatutos.</p></div>
-      <div class="card"><div class="kpi">1–3 días</div><h3>Trámite</h3><p>Casi todo en línea. Definir nombre, objeto amplio y acciones.</p></div>
-    </div>
-    <div class="qbox reveal" style="margin-top:18px"><p class="q" style="font-size:clamp(1.05rem,2.2vw,1.4rem)">Al constituirla, evalúen el <strong style="font-style:normal;color:var(--amber)">Régimen Simple de Tributación</strong>: un solo pago que junta renta e ICA (Impuesto de Industria y Comercio), con tarifas del 1,8% al 14,5% sobre lo facturado. Aplica a SAS con socios personas naturales e ingresos bajo ~$4.980M al año; hay que inscribirse antes del 31 de enero.</p></div>
-  </div>
-</section>
-
-<!-- FUNDAMENTOS -->
-<section class="section" id="fundamentos">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">15</span> Fundamentos</div>
-    <h2 class="big reveal">Construir un negocio que dé plata</h2>
-    <p class="lead reveal">La realidad colombiana es dura: solo 3 de cada 10 empresas llegan a los 5 años. Saberlo es la ventaja, porque lo que las mata es evitable.</p>
-
-    <div class="statstrip">
-      <div><b class="c-coral" data-target="33" data-decimals="0" data-suffix="%">33%</b><small>de las empresas sobrevive a 5 años en Colombia (3 de cada 10)</small></div>
-      <div><b class="c-teal" data-target="44.5" data-decimals="1" data-suffix="%">44,5%</b><small>sobrevive si es sociedad (SAS): más que las personas naturales</small></div>
-      <div><b class="c-amber" data-target="22.5" data-decimals="1" data-suffix="%">22,5%</b><small>lo artístico puro: la tasa más baja. Por eso no dependan solo de eso</small></div>
-      <div><b class="c-teal" data-target="7" data-decimals="0">7</b><small>factores de supervivencia según Confecámaras: tamaño, red, formalidad, capital…</small></div>
-    </div>
-
-    <div class="grid g2" style="margin-top:18px">
-      <div class="chartbox reveal"><h4>Sobrevivir es crecer y formalizarse</h4><div class="cap">Tasa de supervivencia a 5 años por tamaño de empresa (%). La referencia OCDE es 40%.</div><div class="chart-h"><canvas id="chSurv"></canvas></div><div class="src">Fuente: Confecámaras, "La Supervivencia Empresarial en Colombia".</div></div>
-      <div class="chartbox reveal" style="display:flex;flex-direction:column;justify-content:center">
-        <h4>Qué nos dice esto</h4>
-        <p style="color:var(--mute);font-size:.94rem;margin-top:12px">Las que sobreviven tienen tres cosas: se formalizan (SAS), no dependen de una sola línea y pertenecen a una red. El plan de dos motores + SAS + gremios está diseñado justo para eso.</p>
-        <p style="color:var(--mute);font-size:.94rem;margin:0">Lo artístico solo es el más frágil: es marca y pasión, no el cimiento.</p>
-      </div>
-    </div>
-
-    <div class="reveal" style="margin-top:44px"><h3 style="font-family:Archivo;font-weight:800;font-size:1.3rem;margin-bottom:4px">Los principios que sostienen</h3></div>
-    <div class="grid g3 stag" style="margin-top:18px">
-      <div class="card"><div class="kpi">01</div><h3>Vender antes de gastar</h3><p>Valida el servicio con clientes reales antes de invertir en equipo u oficina. El mercado manda, no la corazonada.</p></div>
-      <div class="card"><div class="kpi">02</div><h3>El flujo de caja manda</h3><p>Cobra anticipos del 50%, ten un colchón de 3–6 meses y no dependas de un solo cliente.</p></div>
-      <div class="card"><div class="kpi">03</div><h3>Cobra por valor</h3><p>Precio por resultado, no por hora. Sube tarifas a medida que el portafolio crece.</p></div>
-      <div class="card"><div class="kpi">04</div><h3>Formalízate temprano</h3><p>SAS + Régimen Simple + factura electrónica. Las sociedades aguantan más que las personas naturales.</p></div>
-      <div class="card"><div class="kpi">05</div><h3>Contrata cuando duela</h3><p>Delega primero con freelancers lo que más horas te quita. Planta fija solo con ingresos recurrentes.</p></div>
-      <div class="card"><div class="kpi">06</div><h3>Dos motores, nunca uno</h3><p>Comercial constante + político estacional. La diversificación es el seguro contra el bajón del año 2–3.</p></div>
-    </div>
-
-    <div class="reveal" style="margin-top:44px"><h3 style="font-family:Archivo;font-weight:800;font-size:1.3rem;margin-bottom:4px">Tiempos realistas</h3><p style="color:var(--mute);font-size:.95rem;max-width:60ch">Firmes y sin humo: esto no es de la noche a la mañana. Este es el ritmo real de maduración.</p></div>
-    <div class="road stag">
-      <div class="step"><div><div class="when">Mes 0–1</div><h4>Montar y validar</h4><p>Constituir la SAS, definir marca y paquete, hacer piezas demo y prospectar. Meta: primeras reuniones.</p></div></div>
-      <div class="step"><div><div class="when">Mes 1–3</div><h4>Primeros clientes</h4><p>Cerrar 2–3 clientes a fee mensual. Ajustar precios y oferta con la realidad. Meta: primeros ingresos serios.</p></div></div>
-      <div class="step"><div><div class="when">Mes 3–6</div><h4>Punto de equilibrio</h4><p>Que los ingresos cubran los costos fijos. Sumar el primer freelance fijo. Meta: dejar de poner plata.</p></div></div>
-      <div class="step"><div><div class="when">Mes 6–12</div><h4>Consolidar el nicho</h4><p>5–8 clientes recurrentes y marca reconocida. Entrar al ciclo político 2027. Meta: rentabilidad.</p></div></div>
-      <div class="step"><div><div class="when">Año 1–2</div><h4>Escalar con el pico 2027</h4><p>Equipo ampliado y campañas en marcha. Meta: el mejor año de facturación.</p></div></div>
-      <div class="step"><div><div class="when">Año 2–3</div><h4>La prueba de fuego</h4><p>Donde muchos mueren. Las reservas y la diversificación son lo que los mantiene vivos. Meta: sobrevivir y crecer.</p></div></div>
-    </div>
-    <div class="qbox reveal"><p class="q">Los primeros ingresos serios llegan en 1–3 meses, la estabilidad en 6–12, y la verdadera prueba es el año 2–3. Quien promete riqueza inmediata, miente.</p></div>
-  </div>
-</section>
-
-<!-- DIFUSION -->
-<section class="section" id="difusion">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">16</span> Cómo nos damos a conocer</div>
-    <h2 class="big reveal">Que nos conozcan por todos lados</h2>
-    <p class="lead reveal">Nadie contrata a quien no conoce. Cuatro frentes al tiempo: lo digital, el voz a voz, lo físico y las redes profesionales.</p>
-
-    <div class="grid g2 stag" style="margin-top:26px">
-      <div class="card" style="border-top:3px solid var(--teal)">
-        <h3>Digital · vitrina y alcance</h3>
-        <ul style="margin:10px 0 0;padding-left:18px;color:var(--mute);font-size:.9rem;line-height:1.75">
-          <li>Portafolio web propio y perfiles de Instagram y TikTok que demuestren el nivel</li>
-          <li>Contenido propio: antes/después, casos, detrás de cámara</li>
-          <li>DMs en frío a negocios objetivo, con una pieza demo hecha para ellos</li>
-          <li>Pauta pequeña para amplificar lo que ya funciona</li>
-          <li>Ficha de Google Maps para aparecer en búsquedas locales</li>
-        </ul>
-      </div>
-      <div class="card" style="border-top:3px solid var(--amber)">
-        <h3>Voz a voz · lo más rentable</h3>
-        <ul style="margin:10px 0 0;padding-left:18px;color:var(--mute);font-size:.9rem;line-height:1.75">
-          <li>Pedir referidos activamente y dar un incentivo por cada uno</li>
-          <li>Testimonios y casos de éxito de cada cliente</li>
-          <li>Activar tu red de BASHI y la red del Externado del socio</li>
-          <li>Hacer un trabajo tan bueno que hablen de ustedes solos</li>
-        </ul>
-      </div>
-      <div class="card" style="border-top:3px solid var(--violet)">
-        <h3>Físico · tocar puertas</h3>
-        <ul style="margin:10px 0 0;padding-left:18px;color:var(--mute);font-size:.9rem;line-height:1.75">
-          <li>Tarjetas y un one-pager de servicios impreso</li>
-          <li>Visitar en persona negocios de Chapinero, Chicó y Usaquén</li>
-          <li>Alianzas con complementarios: agencias de pauta, imprentas, wedding planners, fotógrafos</li>
-          <li>Presencia en ferias de gastronomía, estética e inmobiliaria</li>
-        </ul>
-      </div>
-      <div class="card" style="border-top:3px solid var(--coral)">
-        <h3>Gremios y redes · reputación</h3>
-        <ul style="margin:10px 0 0;padding-left:18px;color:var(--mute);font-size:.9rem;line-height:1.75">
-          <li>Afiliarse a ACOPOL (político) y a la Cámara de Comercio (clústeres)</li>
-          <li>LinkedIn del socio para lo jurídico y corporativo</li>
-          <li>Eventos del sector: IAB, marketing, política</li>
-          <li>Pertenecer a un clúster sube la supervivencia del negocio (dato Confecámaras)</li>
-        </ul>
-      </div>
-    </div>
-    <div class="qbox reveal"><p class="q">Consistencia sobre intensidad: tres acciones cada semana, sostenidas, valen más que una campaña enorme y luego silencio.</p></div>
-  </div>
-</section>
-
-<!-- RUTA -->
-<section class="section" id="ruta">
-  <div class="wrap">
-    <div class="eyebrow reveal"><span class="chapter-no">17</span> Hoja de ruta</div>
-    <h2 class="big reveal">Del papel al primer cliente</h2>
-    <div class="road stag">
-      <div class="step"><div><div class="when">Esta semana</div><h4>Elegir un nicho y hacer piezas demo</h4><p>Estética en Chapinero–Chicó. 3 reels de una clínica real para abrir puertas.</p></div></div>
-      <div class="step"><div><div class="when">Semana 1–2</div><h4>Un paquete claro y prospectar</h4><p>Un plan mensual con nombre y precio ($1,8–3M). Prospectar 10 clínicas por DM.</p></div></div>
-      <div class="step"><div><div class="when">Mes 1–2</div><h4>Cerrar 2–3 a fee mensual</h4><p>Caja recurrente. En paralelo, montar la SAS y buscar el abogado electoral aliado.</p></div></div>
-      <div class="step"><div><div class="when">Nov 26 – Jul 27</div><h4>Entrar al ciclo político</h4><p>Vender precampaña y ofrecerse como proveedor creativo de consultores (ACOPOL).</p></div></div>
-      <div class="step"><div><div class="when">2028+</div><h4>Marketing de gobierno</h4><p>Convertir a los que ganen en clientes por 4 años. Sostener la línea comercial.</p></div></div>
-    </div>
-    <div class="caveats reveal">
-      <h4>⚠ Lo que no puede quedar en el aire</h4>
-      <ul>
-        <li>Topes y calendario de 2027 <strong>todavía no expedidos</strong>: las cifras de 2023 son referencia.</li>
-        <li>Las tarifas altas de agencia son autorreportadas, no auditadas; las tarifas sugeridas son estimaciones para decidir.</li>
-        <li>Los reportes de financiación son incompletos: el gasto real suele ser mayor. No entrar al terreno de pagos sin factura.</li>
-        <li>Nunca deepfakes de rivales ni contenido con IA sin etiquetar.</li>
-        <li>Formación pendiente: diplomado o especialización en marketing político (el Externado tiene la más fuerte) para el socio.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div><b>Dossier estratégico · Bogotá 2027</b><br>Documento interno · datos Colombia 2025–2026.</div>
-    <div style="text-align:right">Nombre de la empresa: <b>por definir</b><br>Siguiente paso: naming + validar el núcleo.</div>
-  </div>
-</footer>
+<footer>Acceso privado · [ Nombre ] · 2027</footer>
 
 <script>
 (function(){
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasGSAP=typeof gsap!=='undefined';
+  var gateWrap=document.getElementById('gate-wrap');
+  var pass=document.getElementById('pass');
+  var err=document.getElementById('err');
+  var views={juliana:document.getElementById('view-juliana'),julian:document.getElementById('view-julian'),full:document.getElementById('view-full')};
 
-  /* Countdown */
-  (function(){
-    var target=new Date("2027-10-31T08:00:00-05:00").getTime();
-    var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
-    function pad(n){return String(n).padStart(2,'0')}
-    function tick(){var t=target-Date.now();if(t<0)t=0;
-      d.textContent=Math.floor(t/86400000);h.textContent=pad(Math.floor(t/3600000)%24);
-      m.textContent=pad(Math.floor(t/60000)%60);s.textContent=pad(Math.floor(t/1000)%60);}
-    tick();setInterval(tick,1000);
-  })();
+  function norm(s){return (s||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ');}
+  var keys={'julitaa':'juliana','julianb':'julian','bashi':'full'};
 
-  /* PATHS interactive module */
-  (function(){
-    var tabs=document.getElementById('pathTabs');
-    var panel=document.getElementById('pathPanel');
-    if(!tabs||!panel)return;
-    var data=[
-      {tab:'Campañas + contenido',star:true,name:'Campañas políticas + contenido',badge:'Recomendado',bclass:'rec',
-       verdict:'El núcleo. Un diferencial difícil de copiar y una ventana con fecha en 2027. Necesita un motor comercial que lo sostenga entre elecciones.',
-       num:'$90.880M',desc:'presupuesto estatal de financiación electoral (2023), más el gasto privado: los topes por alcaldía van de $144M a $5.257M y el 55% se va en propaganda.',
-       clients:['Candidatos a concejo, JAL y alcaldía','Aspirantes a gobernación y asamblea','Partidos y consultores (como proveedor)','Gobiernos electos (2028-2031)'],
-       res:['La red y el criterio legal del socio','Producción rápida con IA','Abogado electoral titulado aliado','Contador para Cuentas Claras'],
-       pros:['Tickets altos por campaña','Poca competencia en la base (concejo, JAL)','El respaldo legal es un diferencial raro','Marketing de gobierno: 4 años de ingreso'],
-       cons:['Estacional: picos cada 2-4 años','Riesgo legal y reputacional','A veces pagos condicionados a ganar','Exige red y algo de reputación'],
-       research:'Mapear candidatos reales de 2027 en Bogotá, Fusagasugá y Cundinamarca, y las tarifas por paquete de la competencia.'},
-      {tab:'Contenido para redes',star:true,name:'Contenido para redes (social media)',badge:'Arranca ya',bclass:'rec',
-       verdict:'El motor de caja inmediato. Poco capital, ciclo de venta corto e ingreso recurrente. Financia todo lo demás.',
-       num:'$911.734M',desc:'invertidos en social media en Colombia en 2025: el formato número uno, cerca del 30% de toda la pauta digital.',
-       clients:['Negocios locales (estética, gastronomía)','Pymes y comercios','Profesionales y consultorios'],
-       res:['Tú + un community manager junior','IA para producir en volumen','Mínimo capital'],
-       pros:['Ciclo de venta corto','Ingreso recurrente (fee mensual)','Demanda enorme','Arranca esta semana'],
-       cons:['Precios más bajos por cliente','Competencia saturada de freelancers','Puede volverse operativo y repetitivo'],
-       research:'Precios finos por nicho y cómo automatizar con IA para escalar sin contratar mucho.'},
-      {tab:'Productora comercial',star:false,name:'Productora audiovisual comercial',badge:'Complemento fuerte',bclass:'comp',
-       verdict:'Tu fuerte aplicado a marcas. Buen ticket por proyecto y se conecta con todo lo demás.',
-       num:'$858.169M',desc:'inversión en video digital en Colombia en 2025 (+13,1%). El branded content, además, creció más de 66%.',
-       clients:['Marcas y empresas','Agencias (como proveedor de producción)','Pymes que lanzan producto'],
-       res:['Equipo de producción (ya lo tienes)','Portafolio comercial','Red de freelancers'],
-       pros:['Tickets medios-altos por proyecto','Es tu fuerte','Demanda constante todo el año','Se conecta con el núcleo político'],
-       cons:['Suele ser por proyecto, no recurrente','Competencia de otras productoras','Depende de conseguir clientes seguido'],
-       research:'Tarifas de comerciales y branded content en Bogotá y alianzas con agencias que tercerizan producción.'},
-      {tab:'Videos musicales',star:false,name:'Videos musicales / artístico',badge:'Marca y pasión',bclass:'brand',
-       verdict:'Tu terreno natural y el alma de BASHI. Vitrina y cultura, pero rara vez paga las cuentas por sí solo.',
-       num:'US$105,2M',desc:'tamaño del mercado de música grabada en Colombia en 2025 (+17,9%). Solo en Spotify, los artistas locales generaron $468.000M en regalías.',
-       clients:['Artistas independientes','Sellos y disqueras','Managers y bookers','Raperos y creadores locales'],
-       res:['Equipo de cámara y edición (ya lo tienes)','Dirección y estética','Red de artistas'],
-       pros:['Es tu pasión y ya tienes marca','Portafolio vistoso que abre puertas','Conexión con la cultura','Upside si un artista explota'],
-       cons:['Los artistas pagan poco','Márgenes bajos, mucho trabajo','Ingresos irregulares','Difícil de escalar solo con esto'],
-       research:'Cuánto pagan de verdad sellos vs. independientes, y si conviene cobrar parte en porcentaje de derechos.'},
-      {tab:'Estudio musical',star:false,name:'Estudio musical / producción',badge:'Largo plazo',bclass:'long',
-       verdict:'Ingreso recurrente y un activo propio, pero pide capital y una ubicación. Mejor cuando ya haya caja.',
-       num:'+17,9%',desc:'crece el ecosistema musical colombiano y con él los estudios de grabación. El ingreso llega por horas de estudio y producción.',
-       clients:['Artistas y productores','Creadores de contenido y podcasters','Publicistas que necesitan audio','Tú mismo (DRUM SEP BASHI)'],
-       res:['Capital para equipo y acústica','Un espacio fijo','Conocimiento de producción y mezcla'],
-       pros:['Ingreso recurrente por horas','Es un activo que se valoriza','Sinergia con el video musical','Encaja con tus herramientas de audio'],
-       cons:['Requiere capital alto para arrancar','Punto de equilibrio lento','Atado a una ubicación','Mantenimiento de equipo'],
-       research:'Costo real de montar un estudio en Bogotá, la demanda de horas y las tarifas que se cobran hoy.'},
-      {tab:'Agencia publicitaria',star:false,name:'Agencia publicitaria',badge:'Largo plazo',bclass:'long',
-       verdict:'El techo más alto de todos, pero pide equipo y músculo desde el día uno. Es un destino, no un punto de partida.',
-       num:'$1,11 billones',desc:'lo que facturaron las agencias digitales en Colombia en 2025, dentro de un mercado de medios de más de $5 billones.',
-       clients:['Marcas medianas y grandes','Pymes con presupuesto','Empresas que tercerizan su marketing'],
-       res:['Equipo multidisciplinario','Capital de trabajo','Cartera de cuentas','Procesos y estructura'],
-       pros:['Techo de ingresos altísimo','Contratos grandes y recurrentes','Prestigio de marca','Escalable'],
-       cons:['Exige equipo grande desde el inicio','Competencia feroz y establecida','Ciclos de venta largos','Alto capital de trabajo'],
-       research:'Nichos de agencia poco atendidos y si conviene el modelo boutique (especializado) en vez de full-service.'},
-      {tab:'Productos digitales',star:false,name:'Productos digitales y formación',badge:'Apuesta lateral',bclass:'long',
-       verdict:'Lo más escalable: vendes sin cambiar horas por plata. Márgenes altos si pega, pero difícil de vender al inicio.',
-       num:'Global',desc:'presets, LUTs, plugins y cursos se venden a todo el mundo. Tu DRUM SEP BASHI es un primer producto natural.',
-       clients:['Editores y creadores','Músicos y productores','Aprendices de tu oficio'],
-       res:['Tu conocimiento','Tiempo de producción','Una audiencia que te siga'],
-       pros:['Escalable: ingreso pasivo','Márgenes altísimos','Alcance global','Refuerza tu marca personal'],
-       cons:['Difícil de vender sin audiencia','Ingresos inciertos al inicio','Requiere marketing constante'],
-       research:'Qué producto tiene demanda real y por qué canales venderlo (Gumroad, marketplaces, tu propia web).'},
-      {tab:'Tecnología avícola',star:false,name:'Tecnología para avicultores (AgTech)',badge:'Rama nueva',bclass:'brand',
-       verdict:'La idea de Juliana: digitalizar las granjas de Fusa. Mercado local cautivo y sin competencia, aunque exige aprender el sector y vender distinto a lo creativo.',
-       num:'300+',desc:'granjas avícolas solo en Fusa, la capital avícola de Cundinamarca, casi todas gestionadas con cuaderno o Excel y perdiendo plata por falta de datos.',
-       clients:['Granjas avícolas de pollo y huevo','Productores agro del Sumapaz','Mipymes familiares del sector'],
-       res:['Software existente para integrar (Avisoft, Avi-Smart)','Sensores IoT económicos ($20-80)','Saber del negocio avícola','Acompañamiento y soporte'],
-       pros:['Mercado local cautivo, sin competencia','Ingreso recurrente (soporte mensual)','Resuelve un dolor real: plata que se pierde','Encaja con Fusa y con tu interés en tecnología'],
-       cons:['Exige aprender el negocio avícola','Venta más técnica y lenta','Depende de la adopción del dueño','Lejos de lo creativo'],
-       research:'Qué software conviene integrar o revender, el costo real de los sensores, y cuánto pierde hoy una granja promedio por no tener datos.'}
-    ];
-    function li(arr){return arr.map(function(x){return '<li>'+x+'</li>'}).join('');}
-    function render(i){
-      var d=data[i];
-      panel.innerHTML=
-        '<div class="path-head"><div><h3>'+d.name+'</h3><p class="path-verdict">'+d.verdict+'</p></div>'+
-        '<span class="path-badge '+d.bclass+'">'+d.badge+'</span></div>'+
-        '<div class="path-market"><span class="big-num">'+d.num+'</span><span class="mkt-desc">'+d.desc+'</span></div>'+
-        '<div class="path-cols"><div class="path-col"><h5>Clientes</h5><ul>'+li(d.clients)+'</ul></div>'+
-        '<div class="path-col"><h5>Recursos que pide</h5><ul>'+li(d.res)+'</ul></div></div>'+
-        '<div class="path-cols"><div class="path-col pros"><h5>A favor</h5><ul>'+li(d.pros)+'</ul></div>'+
-        '<div class="path-col cons"><h5>En contra</h5><ul>'+li(d.cons)+'</ul></div></div>'+
-        '<div class="path-research"><b>Qué seguir investigando</b>'+d.research+'</div>';
-      Array.prototype.forEach.call(tabs.children,function(t,j){t.classList.toggle('active',j===i);t.setAttribute('aria-selected',j===i);});
-      if(hasGSAP && !reduce){gsap.from(panel.children,{opacity:0,y:14,duration:.4,stagger:.06,ease:'power2.out'});}
-    }
-    data.forEach(function(d,i){
-      var b=document.createElement('button');
-      b.className='path-tab'+(i===0?' active':'');
-      b.setAttribute('role','tab');
-      b.innerHTML=(d.star?'<span class="star">\u2605</span>':'')+d.tab;
-      b.addEventListener('click',function(){render(i);});
-      tabs.appendChild(b);
+  var chick='<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="40" cy="53" rx="23" ry="20" fill="#FFD23F"/><path d="M18 53 q-7 2 -3 9 q6 0 7 -6 z" fill="#FFC53F"/><path d="M62 53 q7 2 3 9 q-6 0 -7 -6 z" fill="#FFC53F"/><circle cx="40" cy="32" r="17" fill="#FFDE59"/><circle cx="34" cy="31" r="2.6" fill="#333"/><circle cx="46" cy="31" r="2.6" fill="#333"/><path d="M37 36 l3 4 l3 -4 z" fill="#FF8A1E"/><path d="M44 20 q3 -7 8 -5 q-1 5 -6 7 z" fill="#FF9BC4"/><path d="M31 72 l-3 6 M40 74 v6 M49 72 l3 6" stroke="#FF8A1E" stroke-width="3" stroke-linecap="round" fill="none"/></svg>';
+  function chicks(on){
+    document.querySelectorAll('.jl-chick').forEach(function(c){c.remove();});
+    if(!on)return;
+    [['left:14px;bottom:70px;','0s'],['right:16px;top:84px;','.7s'],['left:46%;bottom:14px;opacity:.3;','1.3s']].forEach(function(p){
+      var d=document.createElement('div');d.className='jl-chick';d.style.cssText=p[0];d.style.animationDelay=p[1];d.innerHTML=chick;document.body.appendChild(d);
     });
-    render(0);
-  })();
-
-  /* Simulador de ingresos */
-  (function(){
-    var ids=['cf','cfp','pr','prp','cp','cpp'],el={};
-    ids.forEach(function(i){el[i]=document.getElementById(i);});
-    if(!el.cf)return;
-    function money(v){
-      if(v>=1e6)return '$'+(v/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})+' M';
-      if(v>=1e3)return '$'+Math.round(v/1e3)+' k';
-      return '$'+Math.round(v);
-    }
-    function m1(x){return '$'+x.toLocaleString('es-CO',{minimumFractionDigits:(x%1?1:0),maximumFractionDigits:1})+' M';}
-    function calc(){
-      var cf=+el.cf.value,cfp=+el.cfp.value,pr=+el.pr.value,prp=+el.prp.value,cp=+el.cp.value,cpp=+el.cpp.value;
-      document.getElementById('v-cf').textContent=cf;
-      document.getElementById('v-cfp').textContent=m1(cfp);
-      document.getElementById('v-pr').textContent=pr;
-      document.getElementById('v-prp').textContent=m1(prp);
-      document.getElementById('v-cp').textContent=cp;
-      document.getElementById('v-cpp').textContent=m1(cpp);
-      var month=(cf*cfp+pr*prp+cp*cpp)*1e6;
-      document.getElementById('r-month').innerHTML=money(month)+' <small>/mes</small>';
-      document.getElementById('r-year').textContent=money(month*12);
-      document.getElementById('r-net').textContent=money(month*0.65);
-    }
-    ids.forEach(function(i){el[i].addEventListener('input',calc);});
-    calc();
-  })();
-
-  /* GSAP animations */
-  if(hasGSAP && !reduce){
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* progress bar */
-    gsap.to('#progress',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
-
-    /* hero title split by word */
-    var ht=document.getElementById('heroTitle');
-    if(ht){
-      var html=ht.innerHTML;
-      var tmp=ht.textContent;
-      // wrap words preserving the highlight span
-      ht.innerHTML=html.replace(/(<span class="hl">)([^<]+)(<\/span>)|(\S+)/g,function(mm,a,b,c,plain){
-        function words(str,cls){return str.split(/(\s+)/).map(function(t){return /\S/.test(t)?'<span class="w'+(cls?' '+cls:'')+'">'+t+'</span>':t}).join('')}
-        if(plain!==undefined)return words(plain);
-        return a+words(b,'')+c;
-      });
-      gsap.from(ht.querySelectorAll('.w'),{yPercent:120,opacity:0,duration:.8,ease:'power3.out',stagger:.06,delay:.1});
-    }
-    /* hero blocks */
-    gsap.from('.hero .sub,.hero .namebox,.hero .thesis,.hero .countdown',{opacity:0,y:26,duration:.7,ease:'power2.out',stagger:.1,delay:.5});
-    gsap.from('.statstrip div',{opacity:0,y:22,duration:.6,ease:'power2.out',stagger:.08,scrollTrigger:{trigger:'.statstrip',start:'top 88%'}});
-
-    /* generic reveals */
-    gsap.utils.toArray('.reveal').forEach(function(el){
-      gsap.from(el,{opacity:0,y:26,duration:.7,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}});
-    });
-    /* staggered groups */
-    gsap.utils.toArray('.stag').forEach(function(c){
-      gsap.from(c.children,{opacity:0,y:30,scale:.96,duration:.6,ease:'back.out(1.4)',stagger:.09,scrollTrigger:{trigger:c,start:'top 84%'}});
-    });
-    /* nav active link highlight */
-    var navlinks=document.querySelectorAll('.nav-links a');
-    navlinks.forEach(function(a){
-      var id=a.getAttribute('href');var sec=id&&document.querySelector(id);
-      if(!sec)return;
-      ScrollTrigger.create({trigger:sec,start:'top 55%',end:'bottom 55%',
-        onToggle:function(self){if(self.isActive){navlinks.forEach(function(x){x.classList.remove('on')});a.classList.add('on');}}});
-    });
-    /* timeline items */
-    gsap.utils.toArray('.tl').forEach(function(el){
-      gsap.from(el,{opacity:0,x:-18,duration:.6,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 86%'}});
-    });
-    /* niche pips grow */
-    gsap.utils.toArray('.niche-row').forEach(function(row){
-      var pips=row.querySelectorAll('.pip');
-      pips.forEach(function(p){if(p.getAttribute('data-on')==='1')p.classList.add('on')});
-      gsap.from(pips,{scaleY:0,duration:.5,ease:'back.out(2)',stagger:.05,scrollTrigger:{trigger:row,start:'top 88%'}});
-    });
-    /* subtle hero glow parallax */
-    gsap.to('.hero .glow',{yPercent:30,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-
-    /* counters */
-    gsap.utils.toArray('[data-target]').forEach(function(el){
-      var target=parseFloat(el.getAttribute('data-target'));
-      var dec=parseInt(el.getAttribute('data-decimals')||'0',10);
-      var pre=el.getAttribute('data-prefix')||'';var suf=el.getAttribute('data-suffix')||'';
-      var o={v:0};
-      gsap.to(o,{v:target,duration:1.4,ease:'power1.out',
-        scrollTrigger:{trigger:el,start:'top 92%'},
-        onUpdate:function(){el.textContent=pre+o.v.toLocaleString('es-CO',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;}});
-    });
-  } else {
-    /* reduced motion / no gsap: turn on pips statically */
-    document.querySelectorAll('.pip[data-on="1"]').forEach(function(p){p.classList.add('on')});
   }
-
-  /* CHARTS — instantiate on view so their own animation plays */
-  function buildCharts(){
-    if(typeof Chart==='undefined')return;
-    Chart.defaults.font.family='Inter, sans-serif';Chart.defaults.color='#93A0BC';
-    var teal='#33E1C4',amber='#FFC24B',coral='#FF6E5B',violet='#9B8CFF',line='#26324f';
-    var base={responsive:true,maintainAspectRatio:false,animation:reduce?false:{duration:900}};
-    var made={};
-    function make(id,fn){var c=document.getElementById(id);if(!c||made[id])return;made[id]=true;fn(c);}
-
-    function invest(c){new Chart(c,{type:'bar',data:{labels:['2023','2024','2025'],datasets:[{data:[2.63,2.82,3.04],backgroundColor:teal,borderRadius:6,barPercentage:.6}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return '$'+x.parsed.y+' billones'}}}},scales:{y:{grid:{color:line},ticks:{callback:function(v){return '$'+v+'B'}}},x:{grid:{display:false}}}})});}
-    function format(c){new Chart(c,{type:'doughnut',data:{labels:['Video','Social','Search','Display','Otros'],datasets:[{data:[32.1,25.3,18.6,14.8,9.2],backgroundColor:[teal,violet,amber,'#4A6FA5','#33415C'],borderColor:'#131C31',borderWidth:3}]},options:Object.assign({},base,{cutout:'62%',plugins:{legend:{position:'right',labels:{boxWidth:12,padding:12,font:{size:11}}},tooltip:{callbacks:{label:function(x){return x.label+': '+x.parsed+'%'}}}}})});}
-    function growth(c){new Chart(c,{type:'bar',data:{labels:['Branded content','Influencer','Video','Digital total'],datasets:[{data:[66,23.1,19.2,9.1],backgroundColor:[coral,amber,teal,violet],borderRadius:6,barPercentage:.62}]},options:Object.assign({},base,{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return '+'+x.parsed.x+'%'}}}},scales:{x:{grid:{color:line},ticks:{callback:function(v){return v+'%'}}},y:{grid:{display:false}}}})});}
-    function topes(c){new Chart(c,{type:'bar',data:{labels:['≤25k votantes','25k–50k','1M–5M','Bogotá'],datasets:[{data:[144,275,2631,5257],backgroundColor:amber,borderRadius:6,barPercentage:.6}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return '$'+x.parsed.y.toLocaleString('es-CO')+' millones'}}}},scales:{y:{type:'logarithmic',grid:{color:line},ticks:{callback:function(v){return '$'+v+'M'}}},x:{grid:{display:false}}}})});}
-    function fusa(c){new Chart(c,{type:'bar',data:{labels:['Fusagasugá','Villeta','Chía','Cajicá','Tabio','Girardot'],datasets:[{data:[17,14,13,12,12,11],backgroundColor:['#33E1C4','#4A6FA5','#4A6FA5','#4A6FA5','#4A6FA5','#4A6FA5'],borderRadius:6,barPercentage:.66}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return x.parsed.y+' candidatos a la alcaldía'}}}},scales:{y:{grid:{color:line},ticks:{precision:0}},x:{grid:{display:false}}}})});}
-    function redes(c){new Chart(c,{type:'bar',data:{labels:['Facebook','TikTok','Instagram','LinkedIn'],datasets:[{data:[44.2,37.7,23.3,16.0],backgroundColor:['#4A6FA5','#33E1C4','#33E1C4','#4A6FA5'],borderRadius:6,barPercentage:.64}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return x.parsed.y+' millones de usuarios'}}}},scales:{y:{grid:{color:line},ticks:{callback:function(v){return v+'M'}}},x:{grid:{display:false}}}})});}
-    function surv(c){new Chart(c,{type:'bar',data:{labels:['Micro','Pequeña','Mediana','Grande'],datasets:[{data:[33.4,60.9,73.7,85.7],backgroundColor:[coral,amber,teal,teal],borderRadius:6,barPercentage:.62}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return x.parsed.y+'% sobrevive a 5 años'}}}},scales:{y:{grid:{color:line},max:100,ticks:{callback:function(v){return v+'%'}}},x:{grid:{display:false}}}})});}
-
-    function esc(c){new Chart(c,{type:'bar',data:{labels:['Conservador','Realista','Ambicioso'],datasets:[{data:[76,194,422],backgroundColor:['#5C6A8A',teal,amber],borderRadius:6,barPercentage:.6}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return '$'+x.parsed.y+' millones en 2027'}}}},scales:{y:{grid:{color:line},ticks:{callback:function(v){return '$'+v+'M'}}},x:{grid:{display:false}}}})});}
-
-    var map={chInvest:invest,chFormat:format,chGrowth:growth,chTopes:topes,chFusa:fusa,chRedes:redes,chSurv:surv,chEsc:esc};
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){make(e.target.id,map[e.target.id]);io.unobserve(e.target);}})},{rootMargin:'0px 0px -10% 0px'});
-      Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
-    } else {Object.keys(map).forEach(function(id){make(id,map[id])});}
+  function show(role){
+    gateWrap.style.display='none';
+    Object.keys(views).forEach(function(k){views[k].classList.remove('active');});
+    if(views[role])views[role].classList.add('active');
+    var jul=(role==='juliana');
+    document.documentElement.classList.toggle('theme-juliana',jul);
+    chicks(jul);
+    window.scrollTo(0,0);
   }
-  if(document.readyState!=='loading')buildCharts();else window.addEventListener('DOMContentLoaded',buildCharts);
+  function reset(){
+    Object.keys(views).forEach(function(k){views[k].classList.remove('active');});
+    document.documentElement.classList.remove('theme-juliana');chicks(false);
+    gateWrap.style.display='flex';pass.value='';err.classList.remove('show');pass.focus();
+  }
+  function tryEnter(){
+    var role=keys[norm(pass.value)];
+    if(role){err.classList.remove('show');show(role);}
+    else{err.classList.add('show');pass.select();}
+  }
+  document.getElementById('enter').addEventListener('click',tryEnter);
+  pass.addEventListener('keydown',function(e){if(e.key==='Enter')tryEnter();});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-logout]'),function(b){b.addEventListener('click',reset);});
+  pass.focus();
 })();
 </script>
-<script src="comments-widget.js" defer></script>
 </body>
 </html>
