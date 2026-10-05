@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Todos los comentarios · proyecto 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#080B14;--ink-2:#0D1322;--panel:#131C31;--line:#26324f;--bone:#EAEEF7;--mute:#93A0BC;--mute-2:#5C6A8A;--teal:#33E1C4;--amber:#FFC24B;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;background-image:linear-gradient(rgba(51,225,196,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(51,225,196,.03) 1px,transparent 1px);background-size:46px 46px}
+h1,h2,h3{font-family:"Archivo",sans-serif;margin:0;line-height:1.05;letter-spacing:-.02em}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:rgba(8,11,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:720px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Archivo";font-weight:800;font-size:1rem}
+.brand .dot{width:11px;height:11px;background:var(--teal);border-radius:2px;box-shadow:0 0 14px var(--teal)}
+.back{font-family:"Archivo";font-weight:700;font-size:.8rem;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:8px 15px}
+.top{padding:34px 0 10px}
+.top h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;margin-bottom:8px}
+.top p{color:var(--mute);margin:0 0 20px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.count{font-family:"Archivo";font-weight:800;font-size:.9rem;color:var(--teal)}
+.btn{font-family:"Archivo";font-weight:700;font-size:.82rem;color:var(--ink);background:var(--teal);border:none;border-radius:100px;padding:9px 16px;cursor:pointer}
+.filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:20px;-webkit-overflow-scrolling:touch}
+.filters button{flex:none;font-family:"Archivo";font-weight:700;font-size:.74rem;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:7px 13px;cursor:pointer;white-space:nowrap}
+.filters button.on{color:var(--ink);background:var(--teal);border-color:var(--teal)}
+.list{display:flex;flex-direction:column;gap:12px;padding-bottom:60px}
+.item{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.item .tag{display:inline-block;font-family:"Archivo";font-weight:700;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:rgba(51,225,196,.12);border-radius:100px;padding:3px 10px;margin-bottom:10px}
+.item .m{font-size:1rem;margin:0 0 8px;white-space:pre-wrap;color:var(--bone)}
+.item .meta{font-size:.78rem;color:var(--mute-2)}
+.item .meta b{color:var(--mute);font-weight:600}
+.empty{text-align:center;color:var(--mute-2);padding:50px 0}
+.loading{text-align:center;color:var(--mute);padding:40px 0}
+@media(max-width:600px){.top{padding:26px 0 6px}}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <div class="brand"><span class="dot"></span>Comentarios</div>
+  <a class="back" href="/">← Inicio</a>
+</div></nav>
+
+<div class="wrap">
+  <div class="top">
+    <h1>Todos los comentarios</h1>
+    <p>Lo que han dejado en cada sección, de todas las páginas, en un solo lugar.</p>
+    <div class="bar">
+      <span class="count" id="count">Cargando...</span>
+      <button class="btn" id="refresh">Actualizar</button>
+    </div>
+    <div class="filters" id="filters"></div>
+  </div>
+  <div class="list" id="list"><div class="loading">Cargando comentarios...</div></div>
+</div>
+
+<script>
+(function(){
+  var API="/api/comments";
+  var all=[],filter="__all__";
+  var T={
+    caminos:"Caminos",tesis:"La tesis",ramas:"Ramas",nucleo:"El núcleo",timing:"Timing",mercado:"Mercado",
+    leyes:"Leyes",ia:"IA",fusa:"Fusagasugá (resumen)",calc:"Simulador",tarifas:"Tarifas",voces:"Voces",
+    biblioteca:"Biblioteca",equipo:"Equipo",sas:"Cómo montarla",fundamentos:"Fundamentos",ruta:"Hoja de ruta",
+    perfil:"Fusa · El municipio",economia:"Fusa · Economía",agtech:"Fusa · Tecnología avícola",
+    politico:"Fusa · Político 2027",cifras:"Fusa · Cifras",plan:"Fusa · Plan",expansion:"Fusa · Sumapaz",
+    nichos:"Nichos",difusion:"Difusión",contacto:"Contacto",contactos:"Contacto"
+  };
+  function label(s){return T[s]||s;}
+  function fmt(iso){try{return new Date(iso).toLocaleDateString("es-CO",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});}catch(e){return"";}}
+
+  var listEl=document.getElementById("list"),countEl=document.getElementById("count"),filtersEl=document.getElementById("filters");
+  document.getElementById("refresh").addEventListener("click",load);
+
+  function load(){
+    fetch(API).then(function(r){return r.json();}).then(function(d){
+      if(!d||!d.ok){listEl.innerHTML='<div class="empty">No se pudieron cargar los comentarios.<br>Revisa que el sitio esté publicado.</div>';countEl.textContent="";return;}
+      all=d.comments||[];
+      countEl.textContent=all.length+(all.length===1?" comentario":" comentarios");
+      buildFilters();render();
+    }).catch(function(){listEl.innerHTML='<div class="empty">Sin conexión con la base de datos.</div>';countEl.textContent="";});
+  }
+
+  function buildFilters(){
+    var secs={};all.forEach(function(c){secs[c.section]=(secs[c.section]||0)+1;});
+    var keys=Object.keys(secs).sort(function(a,b){return secs[b]-secs[a];});
+    var html='<button data-f="__all__"'+(filter==="__all__"?' class="on"':'')+'>Todos ('+all.length+')</button>';
+    keys.forEach(function(k){html+='<button data-f="'+k+'"'+(filter===k?' class="on"':'')+'>'+label(k)+' ('+secs[k]+')</button>';});
+    filtersEl.innerHTML=html;
+    Array.prototype.forEach.call(filtersEl.querySelectorAll("button"),function(b){
+      b.addEventListener("click",function(){filter=b.getAttribute("data-f");buildFilters();render();});
+    });
+  }
+
+  function render(){
+    var rows=all.slice().sort(function(a,b){return (b.created||"").localeCompare(a.created||"");});
+    if(filter!=="__all__")rows=rows.filter(function(c){return c.section===filter;});
+    if(!rows.length){listEl.innerHTML='<div class="empty">Aún no hay comentarios aquí.</div>';return;}
+    listEl.innerHTML="";
+    rows.forEach(function(c){
+      var it=document.createElement("div");it.className="item";
+      var tag=document.createElement("span");tag.className="tag";tag.textContent=label(c.section);
+      var m=document.createElement("p");m.className="m";m.textContent=c.text;
+      var meta=document.createElement("div");meta.className="meta";
+      var who=document.createElement("b");who.textContent=c.name||"Anónimo";
+      meta.appendChild(who);meta.appendChild(document.createTextNode(" · "+fmt(c.created)));
+      it.appendChild(tag);it.appendChild(m);it.appendChild(meta);listEl.appendChild(it);
+    });
+  }
+
+  load();
+  setInterval(load,12000);
+})();
+</script>
+</body>
+</html>
