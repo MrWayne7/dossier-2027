@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fusagasugá a fondo · plaza del negocio 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="theme.js"></script>
+<style>
+:root{--ink:#080B14;--ink-2:#0D1322;--panel:#131C31;--panel-2:#1A2540;--line:#26324f;--bone:#EAEEF7;--mute:#93A0BC;--mute-2:#5C6A8A;--teal:#33E1C4;--teal-dim:#1f8f80;--amber:#FFC24B;--coral:#FF6E5B;--violet:#9B8CFF;--green:#4FD1A5;--maxw:1120px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:66px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.6;background-image:linear-gradient(rgba(79,209,165,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(79,209,165,.035) 1px,transparent 1px);background-size:46px 46px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Archivo",sans-serif;line-height:1.03;margin:0;letter-spacing:-.02em}
+p{margin:0 0 1em}a{color:var(--teal);text-decoration:none}
+strong{color:#fff;font-weight:600}::selection{background:var(--amber);color:var(--ink)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:84px 0;border-top:1px solid var(--line);position:relative}
+.eyebrow{font-family:"Archivo";font-weight:700;font-size:.74rem;letter-spacing:.26em;color:var(--green);text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--green)}
+.chapter-no{font-family:"Archivo";font-weight:800;color:var(--mute-2);font-size:.9rem}
+h2.big{font-size:clamp(2rem,4.8vw,3.3rem);font-weight:800;max-width:20ch;margin-bottom:16px}
+.lead{font-size:clamp(1.02rem,1.7vw,1.24rem);color:var(--mute);max-width:60ch;line-height:1.5}
+.serif{font-family:"Newsreader",serif;font-style:italic}
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--green),var(--amber));transform:scaleX(0);transform-origin:left;z-index:100}
+.glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,209,165,.13),transparent 62%);pointer-events:none;z-index:0}
+nav{position:sticky;top:0;z-index:60;background:rgba(8,11,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Archivo";font-weight:800;font-size:.98rem}
+.brand .dot{width:11px;height:11px;background:var(--green);border-radius:2px;box-shadow:0 0 14px var(--green)}
+.brand small{font-family:"Inter";font-weight:500;color:var(--mute-2);font-size:.72rem}
+.back{font-family:"Archivo";font-weight:700;font-size:.82rem;color:var(--teal);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:9px 16px;white-space:nowrap}
+.back:hover{border-color:var(--mute-2);text-decoration:none}
+.hero{position:relative;padding:56px 0 64px;overflow:hidden}
+.hero .glow{right:-150px;top:-70px}
+.hero-in{position:relative;z-index:2}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.tag{font-family:"Archivo";font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);border-radius:100px;color:var(--mute)}
+.tag.g{color:var(--green);border-color:rgba(79,209,165,.4)}
+.hero h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:900;letter-spacing:-.035em;max-width:14ch;margin-bottom:20px}
+.hero h1 .hl{color:var(--green)}
+.hero .sub{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--mute);max-width:54ch;margin-bottom:34px}
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;z-index:2}
+@media(max-width:720px){.statstrip{grid-template-columns:repeat(2,1fr)}}
+.statstrip div{background:var(--ink-2);padding:22px 18px}
+.statstrip b{display:block;font-family:"Archivo";font-weight:900;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--bone);font-variant-numeric:tabular-nums}
+.statstrip .g{color:var(--green)}.statstrip .a{color:var(--amber)}
+.statstrip small{color:var(--mute);font-size:.82rem;line-height:1.35;display:block;margin-top:4px}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}.card p{color:var(--mute);font-size:.92rem;margin-bottom:0}
+.card .kpi{font-family:"Archivo";font-weight:900;font-size:1.8rem;color:var(--green);margin-bottom:2px;font-variant-numeric:tabular-nums}
+.chartbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.chartbox h4{font-size:1.02rem;font-weight:700;margin-bottom:4px}.chartbox .cap{font-size:.8rem;color:var(--mute);margin-bottom:16px}
+.chart-h{position:relative;height:250px}.src{font-size:.7rem;color:var(--mute-2);margin-top:14px}
+.qbox{background:linear-gradient(150deg,var(--panel-2),var(--ink-2));border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:14px;padding:28px 30px;margin-top:24px}
+.qbox .q{font-family:"Newsreader",serif;font-style:italic;font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.35;max-width:46ch}
+.niche{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.nrow{display:grid;grid-template-columns:44px 1fr;gap:15px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.nrow .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-size:1.3rem;background:rgba(79,209,165,.14)}
+.nrow h4{font-size:1rem;font-weight:700;margin-bottom:3px}.nrow p{font-size:.86rem;color:var(--mute);margin:0}
+.road{counter-reset:s;display:grid;gap:14px;margin-top:8px}
+.step{display:grid;grid-template-columns:50px 1fr;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;align-items:start}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:"Archivo";font-weight:900;font-size:1.4rem;color:var(--green);line-height:1}
+.step h4{font-size:1.02rem;font-weight:700;margin-bottom:4px}.step p{font-size:.88rem;color:var(--mute);margin:0}
+.esc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+@media(max-width:760px){.esc{grid-template-columns:1fr}}
+.esc .c{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.esc .c h3{font-size:1.1rem;font-weight:800;margin-bottom:12px}
+.esc .c .ln{font-size:.86rem;color:var(--bone);margin-bottom:6px}
+.esc .c .ln b.t{color:var(--green)}.esc .c .ln b.a{color:var(--amber)}
+.esc .c .tot{border-top:1px solid var(--line);padding-top:12px;margin-top:8px}
+.esc .c .tot span{font-size:.72rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.esc .c .tot div{font-family:"Archivo";font-weight:900;font-size:1.6rem;color:var(--green)}
+.esc .c.con{border-top:3px solid var(--mute-2)}.esc .c.rea{border-top:3px solid var(--green)}.esc .c.amb{border-top:3px solid var(--amber)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.diff{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;border-top:3px solid var(--green)}
+.diff h4{font-size:1.05rem;font-weight:700;margin-bottom:8px}.diff p{font-size:.9rem;color:var(--mute);margin:0}
+.subh{font-family:"Archivo";font-weight:800;font-size:1.3rem;margin-bottom:4px}
+.reveal{will-change:transform,opacity}
+footer{border-top:1px solid var(--line);padding:44px 0 64px;color:var(--mute-2);font-size:.85rem;text-align:center}
+footer a{font-family:"Archivo";font-weight:700}
+@media(max-width:600px){
+  .wrap{padding:0 16px}.section{padding:54px 0}
+  h2.big{font-size:clamp(1.7rem,7.4vw,2.3rem)}.lead{font-size:1rem}
+  .hero{padding:34px 0 46px}.hero h1{font-size:clamp(2.2rem,11vw,3rem)}
+  .hero .glow{width:340px;height:340px}
+  .statstrip div{padding:16px 14px}.statstrip b{font-size:1.7rem}
+  .card,.chartbox,.esc .c,.diff{padding:18px}.chart-h{height:210px}
+  .qbox{padding:22px 20px}.qbox .q{font-size:1.1rem}
+  .brand small{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav><div class="nav-in">
+  <div class="brand"><span class="dot"></span>FUSAGASUGÁ <small>a fondo · plaza 2027</small></div>
+  <a class="back" href="index.html">← Volver al dossier</a>
+</div></nav>
+
+<header class="hero"><span class="glow"></span><div class="wrap hero-in">
+  <div class="tag-row"><span class="tag g">Ciudad Jardín de Colombia</span><span class="tag">2º de Cundinamarca</span><span class="tag">Capital del Sumapaz</span></div>
+  <h1>Fusagasugá, <span class="hl">nuestra plaza.</span></h1>
+  <p class="sub">Municipio intermedio a una hora de Bogotá: comercio, turismo, fincas y una política hervidero. Suficiente mercado para vivir de esto, y poca competencia creativa de nivel.</p>
+  <div class="statstrip">
+    <div><b class="g" data-t="162844" data-d="0">162.844</b><small>habitantes en 2026 (DANE): 2º del departamento tras Soacha</small></div>
+    <div><b class="g" data-t="450" data-d="0" data-suf="+">450+</b><small>viveros de plantas ornamentales que abastecen al país</small></div>
+    <div><b class="a" data-t="115981" data-d="0">115.981</b><small>votantes en el censo electoral: mercado político real</small></div>
+    <div><b class="a">~1 h</b><small>de Bogotá por la vía Panamericana: escapada de fin de semana</small></div>
+  </div>
+</div></header>
+
+<!-- PERFIL -->
+<section class="section" id="perfil"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">01</span> El municipio</div>
+  <h2 class="big reveal">Quién es Fusa</h2>
+  <p class="lead reveal">Su nombre significa "mujer que se convierte en aroma". Ciudad templada, verde y en crecimiento, y el centro de comercio y servicios de toda una provincia.</p>
+  <div class="grid g3 stag" style="margin-top:28px">
+    <div class="card"><div class="kpi">Sumapaz</div><h3>Capital de provincia</h3><p>Cabeza de 10 municipios y unos 270.000 habitantes en total. Todo lo regional pasa por aquí.</p></div>
+    <div class="card"><div class="kpi">~19°C</div><h3>Clima templado</h3><p>A 1.728 m. Clima primaveral todo el año: por eso la llaman Ciudad Jardín.</p></div>
+    <div class="card"><div class="kpi">Flotante</div><h3>Población de paso</h3><p>Turismo de fin de semana y fincas de bogotanos: mucho más consumo del que dice el censo.</p></div>
+  </div>
+</div></section>
+
+<!-- ECONOMIA -->
+<section class="section" id="economia"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">02</span> La economía</div>
+  <h2 class="big reveal">De qué vive Fusa</h2>
+  <p class="lead reveal">Avicultura (es la capital avícola de Cundinamarca), café, flores y frutales; comercio, turismo y un mercado inmobiliario fuerte por la gente que compra finca o segunda vivienda.</p>
+  <div class="statstrip" style="margin-top:24px">
+    <div><b class="g" data-t="4.3" data-d="1" data-suf="M">4,3M</b><small>aves: Fusagasugá es el nº 1 en avicultura de Cundinamarca</small></div>
+    <div><b class="g" data-t="40" data-d="0" data-suf="%">40%</b><small>de la avicultura del departamento está en la provincia del Sumapaz</small></div>
+    <div><b class="a" data-t="300" data-d="0" data-suf="+">300+</b><small>empresas avícolas registradas solo en Fusagasugá</small></div>
+    <div><b class="a" data-t="450" data-d="0" data-suf="+">450+</b><small>viveros de plantas ornamentales que abastecen al país</small></div>
+  </div>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="chartbox reveal"><h4>Los establecimientos, por sector</h4><div class="cap">Comercio y servicios son casi todo el tejido local</div><div class="chart-h"><canvas id="chEco"></canvas></div><div class="src">Fuente: estructura empresarial de Fusagasugá (comercio, servicios, industria).</div></div>
+    <div class="chartbox reveal" style="display:flex;flex-direction:column;justify-content:center">
+      <h4>Qué se mueve</h4>
+      <p style="color:var(--mute);font-size:.94rem;margin-top:12px">Granjas avícolas (pollo y huevo), café (Hacienda Coloma), más de 450 viveros de ornamentales, restaurantes y cafés de especialidad, hoteles y fincas de recreo, e inmobiliarias que venden vivienda y lotes campestres sin parar.</p>
+      <p style="color:var(--mute);font-size:.94rem;margin:0">Todos necesitan foto, video y redes. Y los avicultores, además, necesitan algo que casi nadie les da: tecnología para dejar de perder plata.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- AGTECH -->
+<section class="section" id="agtech"><div class="wrap">
+  <div class="eyebrow reveal" style="color:var(--amber)"><span class="chapter-no" style="color:var(--amber)">◆</span> Rama nueva</div>
+  <h2 class="big reveal">Tecnología para avicultores</h2>
+  <p class="lead reveal">La mayoría de las granjas de Fusa se manejan con cuaderno y Excel. Pierden plata en errores, sobrecostos y tiempo. Ahí hay una rama entera por abrir, distinta de lo creativo pero con el mismo público local.</p>
+  <div class="grid g3 stag" style="margin-top:28px">
+    <div class="card"><div class="kpi">El dolor</div><h3>Vuelan a ciegas</h3><p>Sin datos de mortalidad, consumo o conversión de alimento, cada error se come la utilidad. Un lote mal llevado se pierde sin que el dueño sepa por qué.</p></div>
+    <div class="card"><div class="kpi">La solución</div><h3>Avicultura 4.0 accesible</h3><p>Software de gestión de lotes + sensores IoT económicos ($20–80) que miden temperatura, humedad y amoníaco, con reportes y alertas automáticas al celular.</p></div>
+    <div class="card"><div class="kpi">El mercado</div><h3>300+ granjas, cero competencia</h3><p>Casi todas mipymes familiares con baja tecnología. Nadie local se los implementa ni los acompaña. Fusa es la capital avícola del departamento.</p></div>
+  </div>
+  <div class="two stag" style="margin-top:18px">
+    <div class="diff" style="border-top-color:var(--amber)"><h4>Cómo entramos</h4><p>No hay que inventar el software: se integra lo que ya existe (plataformas como Avisoft o Avi-Smart) con sensores baratos. Lo que se vende es el acompañamiento: instalar, capacitar y dejar al avicultor viendo sus números en tiempo real.</p></div>
+    <div class="diff" style="border-top-color:var(--amber)"><h4>El resultado</h4><p>Menos pérdidas, menos costos y decisiones con datos. Para el dueño es plata que deja de irse; para nosotros, una rama recurrente (implementación + soporte mensual) que nadie más atiende en la región.</p></div>
+  </div>
+  <div class="qbox reveal"><p class="q">Empezamos haciéndoles el contenido; terminamos digitalizándoles la granja. El mismo cliente, dos ramas.</p></div>
+</div></section>
+
+<!-- NICHOS -->
+<section class="section" id="nichos"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">03</span> Nichos comerciales en Fusa</div>
+  <h2 class="big reveal">A quién venderle acá</h2>
+  <p class="lead reveal">Los mismos servicios de siempre, pero apuntados a lo que abunda en Fusagasugá.</p>
+  <div class="niche stag">
+    <div class="nrow"><div class="ic">🏡</div><div><h4>Inmobiliario y fincas</h4><p>Constructoras, proyectos de vivienda y venta de fincas de recreo. Recorridos en video, drone y renders. Tickets altos por proyecto.</p></div></div>
+    <div class="nrow"><div class="ic">☕</div><div><h4>Cafés, restaurantes y turismo</h4><p>Cafés de especialidad, haciendas cafeteras, hoteles y planes de fin de semana. Contenido para atraer al visitante de Bogotá.</p></div></div>
+    <div class="nrow"><div class="ic">🐔</div><div><h4>Avicultura y agroindustria</h4><p>Más de 300 granjas y marcas de pollo y huevo. Marca, catálogo y redes para vender mejor, y la puerta a la rama tecnológica.</p></div></div>
+    <div class="nrow"><div class="ic">🌿</div><div><h4>Viveros y agro</h4><p>Más de 450 viveros y productores de café y frutales. Marca, catálogo visual y venta en redes: un sector sin explotar digitalmente.</p></div></div>
+    <div class="nrow"><div class="ic">💉</div><div><h4>Estética, salud y bienestar</h4><p>Clínicas, odontología y spas que sirven a toda la provincia. Alto margen y contenido mediocre: fácil de superar.</p></div></div>
+    <div class="nrow"><div class="ic">🎓</div><div><h4>Educación</h4><p>La sede principal de la Universidad de Cundinamarca está aquí: academias, cursos y público joven que consume video.</p></div></div>
+  </div>
+</div></section>
+
+<!-- POLITICO -->
+<section class="section" id="politico"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">04</span> El mercado político 2027</div>
+  <h2 class="big reveal">Un hervidero electoral</h2>
+  <p class="lead reveal">El alcalde actual no puede reelegirse: la cancha queda abierta y disputadísima. Decenas de aspirantes, y cada uno necesita quién le produzca la campaña.</p>
+  <div class="statstrip" style="margin-top:26px">
+    <div><b class="a" data-t="1647" data-pre="$" data-d="0" data-suf="M">$1.647M</b><small>tope de gasto de una campaña a la alcaldía (referencia 2023)</small></div>
+    <div><b class="a" data-t="16" data-d="0" data-suf="">~16</b><small>candidatos a la alcaldía en 2023, de todo el espectro de partidos</small></div>
+    <div><b class="g" data-t="17" data-d="0">17</b><small>curules de concejo: la mayoría de concejales busca repetir + retadores</small></div>
+    <div><b class="g" data-t="57" data-d="0" data-suf="%">57%</b><small>de participación en 2023: 65.829 personas votaron</small></div>
+  </div>
+  <div class="grid g4 stag" style="margin-top:18px">
+    <div class="card"><div class="kpi">Abierta</div><h3 style="font-size:1rem">Alcaldía sin dueño</h3><p>Sin reelección, la pelea arranca desde cero.</p></div>
+    <div class="card"><div class="kpi">Concejo</div><h3 style="font-size:1rem">17 curules</h3><p>Cientos de candidatos en 2023. Paquetes medianos.</p></div>
+    <div class="card"><div class="kpi">JAL</div><h3 style="font-size:1rem">Ediles</h3><p>Campañas chicas, ideales de entrada y volumen.</p></div>
+    <div class="card"><div class="kpi">31·10·27</div><h3 style="font-size:1rem">Día de la elección</h3><p>La propaganda arranca 3 meses antes. Se vende desde ya.</p></div>
+  </div>
+  <div class="card reveal" style="margin-top:18px;border-top:3px solid var(--amber)"><h3 style="font-size:1.05rem">Y un semillero: los Consejos de Juventud</h3><p>El Consejo Municipal de Juventud (jóvenes de 14 a 28 años) también se elige por voto popular, y Fusa es pionera en eso. Son campañas pequeñas, de nativos digitales y futuros candidatos: la puerta de entrada más barata al mundo político.</p></div>
+  <div class="qbox reveal"><p class="q">Nadie en Fusa ofrece producción de campaña con respaldo legal-electoral. Ese es el hueco, y llega justo cuando el pueblo entero se vuelve campaña.</p></div>
+</div></section>
+
+<!-- CIFRAS -->
+<section class="section" id="cifras"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">05</span> Cómo llegamos a las cifras</div>
+  <h2 class="big reveal">Del mercado a nuestra caja</h2>
+  <p class="lead reveal">No hay que ganarse Fusa entera. Con una fracción del mercado se llega a números muy buenos. Tres escenarios para dimensionarlo.</p>
+  <div class="esc stag" style="margin-top:28px">
+    <div class="c con"><h3>Conservador</h3><p style="font-size:.86rem;color:var(--mute);margin-bottom:14px">Medio tiempo, arrancando.</p><div class="ln"><b class="t">Comercial:</b> 4 clientes × $1,2M → ~$58M/año</div><div class="ln"><b class="a">Político 2027:</b> 3 campañas chicas ≈ $18M</div><div class="tot"><span>Año electoral</span><div>~$76M</div></div></div>
+    <div class="c rea"><h3>Realista</h3><p style="font-size:.86rem;color:var(--mute);margin-bottom:14px">Con foco y el ciclo en marcha.</p><div class="ln"><b class="t">Comercial:</b> 8 clientes × $1,5M → ~$144M/año</div><div class="ln"><b class="a">Político 2027:</b> 1 mediana + varias chicas ≈ $50M</div><div class="tot"><span>Año electoral</span><div>~$194M</div></div></div>
+    <div class="c amb"><h3>Ambicioso</h3><p style="font-size:.86rem;color:var(--mute);margin-bottom:14px">Equipo armado, campaña grande.</p><div class="ln"><b class="t">Comercial:</b> 14 clientes × $1,8M → ~$302M/año</div><div class="ln"><b class="a">Político 2027:</b> 1 alcaldía + concejo ≈ $120M</div><div class="tot"><span>Año electoral</span><div>~$422M</div></div></div>
+  </div>
+  <div class="chartbox reveal" style="margin-top:18px"><h4>Ingreso proyectado en el año electoral (2027)</h4><div class="cap">Millones de COP · comercial recurrente + bolsa política del ciclo. Estimación para planear, no promesa.</div><div class="chart-h"><canvas id="chEsc"></canvas></div><div class="src">Base: tarifas de mercado ya investigadas, ajustadas a la escala de Fusagasugá.</div></div>
+  <div class="qbox reveal"><p class="q">Con 8 clientes fijos de contenido y un puñado de campañas en 2027, Fusa ya deja cerca de $194 millones en el año pico. A eso se llega tocando puertas.</p></div>
+</div></section>
+
+<!-- PLAN -->
+<section class="section" id="plan"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">06</span> Plan de captación</div>
+  <h2 class="big reveal">Cómo tomamos Fusa, paso a paso</h2>
+  <div class="road stag">
+    <div class="step"><div><h4>Portafolio local</h4><p>Dos o tres piezas demo de negocios reales de Fusa: un café de la Plaza Mayor, una finca en venta y una clínica. Que se vean de ciudad grande.</p></div></div>
+    <div class="step"><div><h4>Primeros clientes comerciales</h4><p>Inmobiliarias y constructoras (mucha vivienda nueva), cafés y hoteles de turismo, viveros. Plan de contenido mensual a fee.</p></div></div>
+    <div class="step"><div><h4>Alianzas locales</h4><p>Aliarse con inmobiliarias, viveros, hoteles y organizadores de eventos: ellos traen clientes de forma recurrente.</p></div></div>
+    <div class="step"><div><h4>Entrada política temprana</h4><p>Ofrecer paquetes a aspirantes a concejo y JAL desde ya, en precampaña. Construir relación antes de que lleguen los de Bogotá.</p></div></div>
+    <div class="step"><div><h4>El pico 2027</h4><p>Campañas en producción entre agosto y octubre. Tope de 4–6 clientes políticos para no quemarse, y priorizar los que pagan y ganan.</p></div></div>
+  </div>
+</div></section>
+
+<!-- DIFUSION -->
+<section class="section" id="difusion"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">07</span> Darse a conocer en Fusa</div>
+  <h2 class="big reveal">En pueblo, la fama corre</h2>
+  <p class="lead reveal">En un municipio intermedio el voz a voz pesa el doble y los medios locales sí llegan. La estrategia cambia respecto a Bogotá.</p>
+  <div class="two stag">
+    <div class="diff"><h4>Lo que más funciona acá</h4><p>Voz a voz y reputación (un buen trabajo se sabe rápido), radio y medios locales (Tizumba, FNoticias, emisoras), y presencia en los festivales: Festival del Retorno, Festival del Sol y el Turismo, Reinado del Café.</p></div>
+    <div class="diff"><h4>Alianzas que abren puertas</h4><p>Inmobiliarias y constructoras, viveros, hoteles y fincas de turismo, cafés reconocidos, y la Universidad de Cundinamarca. Cada aliado es una fuente constante de clientes.</p></div>
+  </div>
+</div></section>
+
+<!-- EXPANSION -->
+<section class="section" id="expansion"><div class="wrap">
+  <div class="eyebrow reveal"><span class="chapter-no">08</span> La provincia del Sumapaz</div>
+  <h2 class="big reveal">Fusa es la puerta, no el techo</h2>
+  <p class="lead reveal">Ganar Fusagasugá abre los otros 9 municipios de la provincia: mismo idioma, misma región, el mismo ciclo electoral.</p>
+  <div class="grid g3 stag" style="margin-top:26px">
+    <div class="card"><div class="kpi">10</div><h3>Municipios</h3><p>Fusagasugá, Silvania, Arbeláez, Pasca, San Bernardo, Granada, Venecia, Pandi, Tibacuy y Cabrera.</p></div>
+    <div class="card"><div class="kpi">~270k</div><h3>Habitantes</h3><p>Todo el mercado de la provincia, con Fusa como centro de servicios.</p></div>
+    <div class="card"><div class="kpi">×10</div><h3>Alcaldías en 2027</h3><p>Cada municipio elige alcalde y concejo: el ciclo político se multiplica.</p></div>
+  </div>
+  <div class="qbox reveal"><p class="q">Empezamos siendo el estudio de Fusa. Terminamos siendo el estudio del Sumapaz.</p></div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>Fusagasugá a fondo</b> · parte del dossier estratégico 2027 · datos 2025–2026.</p>
+  <p><a href="index.html">← Volver al dossier</a> &nbsp;·&nbsp; <a href="mapa.html">Ver mapa mental ↗</a></p>
+</div></footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasG=typeof gsap!=='undefined';
+  if(hasG&&!reduce){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to('#progress',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
+    gsap.from('.hero h1,.hero .sub,.hero .tag-row',{opacity:0,y:24,duration:.7,ease:'power2.out',stagger:.12,delay:.1});
+    gsap.from('.hero .statstrip div',{opacity:0,y:20,duration:.6,ease:'power2.out',stagger:.08,delay:.5});
+    gsap.utils.toArray('.reveal').forEach(function(el){gsap.from(el,{opacity:0,y:26,duration:.7,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}});});
+    gsap.utils.toArray('.stag').forEach(function(c){gsap.from(c.children,{opacity:0,y:28,scale:.97,duration:.6,ease:'back.out(1.4)',stagger:.09,scrollTrigger:{trigger:c,start:'top 84%'}});});
+    gsap.to('.hero .glow',{yPercent:28,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.utils.toArray('[data-t]').forEach(function(el){
+      var t=parseFloat(el.getAttribute('data-t')),d=parseInt(el.getAttribute('data-d')||'0',10),pre=el.getAttribute('data-pre')||'',suf=el.getAttribute('data-suf')||'',o={v:0};
+      gsap.to(o,{v:t,duration:1.4,ease:'power1.out',scrollTrigger:{trigger:el,start:'top 92%'},onUpdate:function(){el.textContent=pre+o.v.toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d})+suf;}});
+    });
+  }
+  function charts(){
+    if(typeof Chart==='undefined')return;
+    Chart.defaults.font.family='Inter, sans-serif';Chart.defaults.color='#93A0BC';
+    var teal='#33E1C4',green='#4FD1A5',amber='#FFC24B',violet='#9B8CFF',line='#26324f';
+    var base={responsive:true,maintainAspectRatio:false,animation:reduce?false:{duration:900}};
+    var made={};
+    function eco(c){new Chart(c,{type:'doughnut',data:{labels:['Comercio','Servicios','Industria','Otros'],datasets:[{data:[57.4,34.1,7.3,1.2],backgroundColor:[green,violet,amber,'#4A6FA5'],borderColor:'#131C31',borderWidth:3}]},options:Object.assign({},base,{cutout:'62%',plugins:{legend:{position:'right',labels:{boxWidth:12,padding:12,font:{size:11}}},tooltip:{callbacks:{label:function(x){return x.label+': '+x.parsed+'%'}}}}})});}
+    function esc(c){new Chart(c,{type:'bar',data:{labels:['Conservador','Realista','Ambicioso'],datasets:[{data:[76,194,422],backgroundColor:['#5C6A8A',green,amber],borderRadius:6,barPercentage:.6}]},options:Object.assign({},base,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return '$'+x.parsed.y+' millones en 2027'}}}},scales:{y:{grid:{color:line},ticks:{callback:function(v){return '$'+v+'M'}}},x:{grid:{display:false}}}})});}
+    var map={chEco:eco,chEsc:esc};
+    function make(id){if(made[id])return;made[id]=true;map[id](document.getElementById(id));}
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){make(e.target.id);io.unobserve(e.target);}})},{rootMargin:'0px 0px -10% 0px'});Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});}
+    else{Object.keys(map).forEach(make);}
+  }
+  if(document.readyState!=='loading')charts();else window.addEventListener('DOMContentLoaded',charts);
+})();
+</script>
+<script src="comments-widget.js" defer></script>
+</body>
+</html>

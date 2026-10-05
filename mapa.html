@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mapa mental · negocio creativo + político 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+:root{--ink:#080B14;--panel:#131C31;--line:#26324f;--bone:#EAEEF7;--mute:#93A0BC;--mute-2:#5C6A8A;--teal:#33E1C4;--amber:#FFC24B}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent}
+body{background-image:linear-gradient(rgba(51,225,196,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(51,225,196,.03) 1px,transparent 1px);background-size:46px 46px}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 22px;background:rgba(8,11,20,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.h-left{display:flex;align-items:center;gap:12px;min-width:0}
+.dot{width:11px;height:11px;background:var(--teal);border-radius:2px;box-shadow:0 0 14px var(--teal);flex:none}
+.h-title{font-family:"Archivo";font-weight:800;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h-title small{display:block;font-family:"Inter";font-weight:500;color:var(--mute-2);font-size:.72rem}
+.h-actions{display:flex;gap:8px;flex:none}
+button,.back{font-family:"Archivo";font-weight:700;font-size:.8rem;color:var(--bone);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:9px 14px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:all .18s ease}
+button:hover,.back:hover{border-color:var(--mute-2)}
+.back{color:var(--teal)}
+@media(max-width:640px){.hide-sm{display:none}.h-title small{display:none}}
+#svg{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
+#svg:active{cursor:grabbing}
+.hint{position:fixed;left:22px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;font-size:.78rem;color:var(--mute-2);background:rgba(8,11,20,.7);border:1px solid var(--line);border-radius:100px;padding:8px 14px;backdrop-filter:blur(8px)}
+.legend{position:fixed;right:22px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;display:flex;flex-wrap:wrap;gap:4px 12px;max-width:min(60vw,420px);justify-content:flex-end;background:rgba(8,11,20,.7);border:1px solid var(--line);border-radius:12px;padding:10px 14px;backdrop-filter:blur(8px)}
+.legend span{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--mute)}
+.legend i{width:9px;height:9px;border-radius:50%;flex:none}
+@media(max-width:720px){.legend{display:none}}
+text{font-family:"Inter",sans-serif}
+</style>
+</head>
+<body>
+<header>
+  <div class="h-left"><span class="dot"></span><div class="h-title">Mapa mental del negocio<small>toca un nodo para abrir o cerrar sus ramas</small></div></div>
+  <div class="h-actions">
+    <button id="expand" class="hide-sm">Expandir</button>
+    <button id="collapse" class="hide-sm">Colapsar</button>
+    <button id="center">Centrar</button>
+    <a class="back" href="index.html">← Dossier</a>
+  </div>
+</header>
+<svg id="svg"></svg>
+<div class="hint">Clic para abrir · arrastra para mover · rueda para zoom</div>
+<div class="legend" id="legend"></div>
+
+<script>
+(function(){
+  var data={name:"El negocio",children:[
+    {name:"Núcleo",children:[
+      {name:"Motor comercial · ahora",children:[{name:"Contenido para redes"},{name:"Productora audiovisual"},{name:"Foto y branding"}]},
+      {name:"Motor político · 2027",children:[{name:"Producción de campaña"},{name:"Cumplimiento electoral"},{name:"Marketing de gobierno"}]}
+    ]},
+    {name:"Ramas de servicio",children:[
+      {name:"Creativo",children:[{name:"Video y reels"},{name:"Motion + IA"},{name:"Fotografía"},{name:"Branding"},{name:"Web"}]},
+      {name:"Legal",children:[{name:"Cumplimiento"},{name:"Contratos y derechos"},{name:"Registro de marca"},{name:"Marketing jurídico"}]},
+      {name:"Político",children:[{name:"Estrategia y relato"},{name:"Redes y pauta"},{name:"Material POP y vallas"},{name:"Media training"}]}
+    ]},
+    {name:"Caminos posibles",children:[
+      {name:"Campañas + contenido ★"},{name:"Contenido para redes ★"},{name:"Productora comercial"},
+      {name:"Videos musicales"},{name:"Estudio musical"},{name:"Agencia publicitaria"},{name:"Productos digitales"},{name:"Tecnología avícola ◆"}
+    ]},
+    {name:"Mercado",children:[
+      {name:"Publicidad digital · $3,04 B"},{name:"Social media · $911.734M"},{name:"Video digital · $858.169M"},
+      {name:"Música · US$105,2M"},{name:"Agencias · $1,11 billones"},{name:"493.825 empresas"}
+    ]},
+    {name:"Plazas",children:[
+      {name:"Bogotá",children:[{name:"Chapinero–Chicó–93"},{name:"Usaquén–Cedritos"},{name:"Calle 100–Salitre"}]},
+      {name:"Fusagasugá",children:[{name:"162.844 habitantes"},{name:"Capital avícola de Cundinamarca"},{name:"17 candidatos en 2023"},{name:"Tope alcaldía $1.647M"}]},
+      {name:"Provincia del Sumapaz · 10 municipios"}
+    ]},
+    {name:"Equipo",children:[
+      {name:"Cerebro · los 2",children:[{name:"Creativo / dirección"},{name:"Abogado / estratega"}]},
+      {name:"Producción",children:[{name:"Editor / motion"},{name:"Camarógrafo"},{name:"Fotógrafo"}]},
+      {name:"Digital",children:[{name:"Community manager"},{name:"Pauta / ads"},{name:"Diseñador"}]},
+      {name:"Aliados",children:[{name:"Abogado electoral"},{name:"Contador"},{name:"Encuestas"}]}
+    ]},
+    {name:"Calendario 2027",children:[
+      {name:"31 oct 2026 · arranca"},{name:"Nov 26–Jul 27 · precampaña"},{name:"31 oct 2027 · elección"},{name:"2028 · gobierno"}
+    ]},
+    {name:"Estructura legal",children:[
+      {name:"SAS"},{name:"Régimen Simple"},{name:"Ley 130 de 1994"},{name:"Ley 1475 de 2011"},{name:"Ley 1123 de 2007"},{name:"IA · CONPES 4144"}
+    ]}
+  ]};
+
+  var palette={"Núcleo":"#33E1C4","Ramas de servicio":"#9B8CFF","Caminos posibles":"#FFC24B","Mercado":"#5B9BD5","Plazas":"#FF6E5B","Equipo":"#4FD1A5","Calendario 2027":"#F59E42","Estructura legal":"#C792EA"};
+  function colorOf(d){var n=d;while(n.depth>1)n=n.parent;return n.depth===0?"#EAEEF7":(palette[n.data.name]||"#8A97B4");}
+
+  // legend
+  var lg=document.getElementById('legend');
+  Object.keys(palette).forEach(function(k){var s=document.createElement('span');s.innerHTML='<i style="background:'+palette[k]+'"></i>'+k;lg.appendChild(s);});
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile=window.matchMedia&&window.matchMedia('(max-width:640px)').matches;
+  var dx=isMobile?23:24,dy=isMobile?140:210;
+  var tree=d3.tree().nodeSize([dx,dy]);
+  var diagonal=d3.linkHorizontal().x(function(d){return d.y;}).y(function(d){return d.x;});
+
+  var svg=d3.select("#svg");
+  var gZoom=svg.append("g");
+  var gLink=gZoom.append("g").attr("fill","none").attr("stroke-width",1.5);
+  var gNode=gZoom.append("g").attr("cursor","pointer").attr("pointer-events","all");
+
+  var zoom=d3.zoom().scaleExtent([0.25,2.5]).on("zoom",function(e){gZoom.attr("transform",e.transform);});
+  svg.call(zoom);
+
+  var root=d3.hierarchy(data);
+  root.x0=0;root.y0=0;
+  root.descendants().forEach(function(d,i){d.id=i;d._children=d.children;if(d.depth>=(isMobile?1:2))d.children=null;});
+
+  function sizes(){return {w:window.innerWidth,h:window.innerHeight};}
+
+  function update(source){
+    var duration=reduce?0:350;
+    var nodes=root.descendants().reverse();
+    var links=root.links();
+    tree(root);
+
+    var transition=svg.transition().duration(duration);
+
+    var node=gNode.selectAll("g").data(nodes,function(d){return d.id;});
+    var nodeEnter=node.enter().append("g")
+      .attr("transform","translate("+source.y0+","+source.x0+")")
+      .attr("fill-opacity",0).attr("stroke-opacity",0)
+      .on("click",function(event,d){d.children=d.children?null:d._children;update(d);});
+    nodeEnter.append("circle").attr("r",5)
+      .attr("fill",function(d){return d._children?colorOf(d):"#0D1322";})
+      .attr("stroke",function(d){return colorOf(d);}).attr("stroke-width",2.2);
+    nodeEnter.append("text").attr("dy","0.32em")
+      .attr("x",function(d){return d._children?-11:11;})
+      .attr("text-anchor",function(d){return d._children?"end":"start";})
+      .attr("font-family","Inter, sans-serif")
+      .attr("font-size",function(d){return d.depth===0?(isMobile?16:15):(d.depth===1?(isMobile?14.5:13.5):(isMobile?13:12));})
+      .attr("font-weight",function(d){return d.depth<=1?700:500;})
+      .attr("fill",function(d){return d.depth===0?"#EAEEF7":(d.depth===1?colorOf(d):"#C7D0E4");})
+      .attr("paint-order","stroke").attr("stroke","#080B14").attr("stroke-width",4)
+      .text(function(d){return d.data.name;});
+
+    node.merge(nodeEnter).transition(transition)
+      .attr("transform",function(d){return "translate("+d.y+","+d.x+")";})
+      .attr("fill-opacity",1).attr("stroke-opacity",1);
+    node.merge(nodeEnter).select("circle")
+      .attr("fill",function(d){return d._children?colorOf(d):"#0D1322";});
+
+    node.exit().transition(transition).remove()
+      .attr("transform","translate("+source.y+","+source.x+")")
+      .attr("fill-opacity",0).attr("stroke-opacity",0);
+
+    var link=gLink.selectAll("path").data(links,function(d){return d.target.id;});
+    var linkEnter=link.enter().append("path")
+      .attr("stroke",function(d){return colorOf(d.target);}).attr("stroke-opacity",0.4)
+      .attr("d",function(){var o={x:source.x0,y:source.y0};return diagonal({source:o,target:o});});
+    link.merge(linkEnter).transition(transition).attr("d",diagonal);
+    link.exit().transition(transition).remove()
+      .attr("d",function(){var o={x:source.x,y:source.y};return diagonal({source:o,target:o});});
+
+    root.eachBefore(function(d){d.x0=d.x;d.y0=d.y;});
+  }
+
+  function fit(){
+    var s={w:window.innerWidth,h:window.innerHeight};
+    svg.attr("width",s.w).attr("height",s.h);
+    var nodes=root.descendants();
+    var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    nodes.forEach(function(d){if(d.x<x0)x0=d.x;if(d.x>x1)x1=d.x;if(d.y<y0)y0=d.y;if(d.y>y1)y1=d.y;});
+    var treeH=(x1-x0)||1,treeW=(y1-y0)||1;
+    var padTop=88,padSide=isMobile?16:44,padBottom=58,labelPad=isMobile?150:240;
+    var availW=s.w-padSide*2,availH=s.h-padTop-padBottom;
+    var scale=Math.min(availW/(treeW+labelPad),availH/(treeH+70),isMobile?1.05:1.1);
+    scale=Math.max(scale,0.18);
+    var tx=padSide-y0*scale;
+    var ty=padTop-x0*scale+Math.max(0,(availH-treeH*scale)/2);
+    svg.transition().duration(reduce?0:500).call(zoom.transform,d3.zoomIdentity.translate(tx,ty).scale(scale));
+  }
+
+  update(root);
+  fit();
+
+  document.getElementById('center').addEventListener('click',fit);
+  document.getElementById('expand').addEventListener('click',function(){
+    root.each(function(d){if(d._children)d.children=d._children;});update(root);
+  });
+  document.getElementById('collapse').addEventListener('click',function(){
+    root.descendants().forEach(function(d){if(d.depth>=1)d.children=null;});update(root);fit();
+  });
+  window.addEventListener('resize',function(){svg.attr("width",window.innerWidth).attr("height",window.innerHeight);});
+})();
+</script>
+</body>
+</html>

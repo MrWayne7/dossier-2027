@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[ Nombre ] · Acceso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#070A12;--ink-2:#0D1322;--panel:#131C31;--panel-2:#1A2540;--line:#273350;--bone:#EEF2FA;--mute:#9AA7C4;--mute-2:#5F6D8E;--teal:#33E1C4;--amber:#FFC24B;--green:#4FD1A5;--coral:#FF6E5B;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--ink);color:var(--bone);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:linear-gradient(rgba(51,225,196,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(51,225,196,.035) 1px,transparent 1px);background-size:46px 46px;display:flex;flex-direction:column}
+h1,h2,h3{font-family:"Archivo",sans-serif;margin:0;line-height:1.05;letter-spacing:-.02em}
+p{margin:0 0 1em}a{color:inherit;text-decoration:none}
+::selection{background:var(--teal);color:var(--ink)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:960px;margin:0 auto;padding:0 22px}
+.center{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 0}
+.glow{position:fixed;left:50%;top:30%;transform:translateX(-50%);width:640px;height:520px;max-width:120vw;background:radial-gradient(circle,rgba(51,225,196,.14),transparent 60%);pointer-events:none;z-index:0}
+/* LOGIN */
+.gate{position:relative;z-index:2;width:100%;max-width:420px;text-align:center}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:"Archivo";font-weight:900;font-size:1.3rem;margin-bottom:28px}
+.brand .mk{width:13px;height:13px;background:var(--teal);border-radius:3px;box-shadow:0 0 14px var(--teal)}
+.gate h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:900;margin-bottom:10px}
+.gate p.sub{color:var(--mute);margin-bottom:28px}
+.field{display:flex;flex-direction:column;gap:12px}
+input[type=password],input[type=text]{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:15px 18px;color:var(--bone);font-family:"Inter";font-size:1.05rem;text-align:center;letter-spacing:.02em}
+input::placeholder{color:var(--mute-2)}
+.btn{font-family:"Archivo";font-weight:800;font-size:1rem;color:var(--ink);background:var(--teal);border:none;border-radius:12px;padding:15px 24px;cursor:pointer;box-shadow:0 0 26px rgba(51,225,196,.32);transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(51,225,196,.45)}
+.err{color:var(--coral);font-size:.9rem;margin-top:14px;min-height:1.2em;opacity:0;transition:opacity .2s ease}
+.err.show{opacity:1}
+.hint{margin-top:26px;font-size:.8rem;color:var(--mute-2)}
+/* VIEWS */
+.view{display:none;position:relative;z-index:2;width:100%;padding:52px 0 72px}
+.view.active{display:block;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.vhead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.hello{font-family:"Archivo";font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.view h2{font-size:clamp(1.9rem,5vw,3rem);font-weight:900;max-width:18ch;margin-bottom:12px}
+.view .vlead{color:var(--mute);font-size:1.08rem;max-width:52ch;margin-bottom:34px}
+.logout{flex:none;font-family:"Archivo";font-weight:700;font-size:.8rem;color:var(--mute);background:var(--panel);border:1px solid var(--line);border-radius:100px;padding:9px 16px;cursor:pointer;white-space:nowrap}
+.logout:hover{border-color:var(--mute-2)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.c{display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;transition:border-color .2s ease,transform .2s ease}
+.c:hover{border-color:var(--teal);transform:translateY(-3px)}
+.c.feat{background:linear-gradient(160deg,var(--panel-2),var(--ink-2));border-color:var(--teal-dim,#1f8f80)}
+.c.span{grid-column:1/-1}
+.c .ic{font-size:1.7rem;display:block;margin-bottom:12px}
+.c h3{font-size:1.2rem;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.c .pill{font-family:"Archivo";font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:100px;background:rgba(51,225,196,.16);color:var(--teal)}
+.c p{color:var(--mute);font-size:.94rem;margin:0}
+.c .go{color:var(--teal);font-family:"Archivo";font-weight:700;font-size:.85rem;margin-top:12px;display:inline-block}
+footer{position:relative;z-index:2;text-align:center;color:var(--mute-2);font-size:.82rem;padding:24px 0 36px}
+@media(max-width:600px){.wrap{padding:0 18px}.c{padding:20px}}
+.theme-juliana{--teal:#FF8FC7}
+.theme-juliana .glow{background:radial-gradient(circle,rgba(255,143,199,.18),transparent 60%)}
+.theme-juliana body,.theme-juliana{background-image:linear-gradient(rgba(255,143,199,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,143,199,.05) 1px,transparent 1px)}
+.theme-juliana ::selection{background:#FF8FC7;color:#2a0d1c}
+.jl-chick{position:fixed;width:50px;height:50px;z-index:1;opacity:.55;pointer-events:none;animation:jlbob 3.4s ease-in-out infinite}
+@keyframes jlbob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-9px) rotate(4deg)}}
+@media(max-width:600px){.jl-chick{width:40px;height:40px;opacity:.45}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.jl-chick{animation:none}}
+</style>
+</head>
+<body>
+<span class="glow"></span>
+
+<!-- LOGIN -->
+<div class="center" id="gate-wrap">
+  <div class="gate" id="gate">
+    <div class="brand"><span class="mk"></span>[ Nombre ]</div>
+    <h1>Bienvenido</h1>
+    <p class="sub">Escribe tu clave para ver lo que te corresponde.</p>
+    <div class="field">
+      <input type="password" id="pass" placeholder="Tu clave" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go">
+      <button class="btn" id="enter">Entrar</button>
+    </div>
+    <div class="err" id="err">Esa clave no es correcta. Intenta de nuevo.</div>
+    <div class="hint">Acceso privado del proyecto.</div>
+  </div>
+</div>
+
+<!-- VISTA JULIANA -->
+<section class="view" id="view-juliana"><div class="wrap">
+  <div class="vhead">
+    <div><div class="hello">Hola, Juliana</div><h2>La mirada de Fusa</h2></div>
+    <button class="logout" data-logout>Salir</button>
+  </div>
+  <p class="vlead">Todo lo tuyo: el mercado de Fusagasugá a fondo y la rama de tecnología para avicultores que propusiste.</p>
+  <div class="cards">
+    <a class="c feat span" href="fusagasuga.html?for=juliana"><span class="ic">🐥</span><h3>Fusagasugá a fondo <span class="pill">Empieza aquí</span></h3><p>Economía, avicultura, nichos, el mercado político 2027 y el plan de cómo llegamos a las cifras.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="fusagasuga.html?for=juliana#agtech"><span class="ic">🐔</span><h3>Tecnología para avicultores</h3><p>La rama nueva: digitalizar las granjas de Fusa. El dolor, la solución y el mercado.</p><span class="go">Ver la rama →</span></a>
+    <a class="c" href="index.html?for=juliana"><span class="ic">📊</span><h3>El proyecto completo</h3><p>Todo el análisis del negocio, por si quieres ver el panorama entero.</p><span class="go">Abrir dossier →</span></a>
+  </div>
+</div></section>
+
+<!-- VISTA JULIAN -->
+<section class="view" id="view-julian"><div class="wrap">
+  <div class="vhead">
+    <div><div class="hello">Hola, Julián</div><h2>Directo al punto</h2></div>
+    <button class="logout" data-logout>Salir</button>
+  </div>
+  <p class="vlead">Lo que te interesa: la propuesta para el cliente y la parte dura de campañas y cifras. Sin rodeos.</p>
+  <div class="cards">
+    <a class="c feat span" href="propuesta.html"><span class="ic">🎯</span><h3>Propuesta comercial <span class="pill">Lo que ve el cliente</span></h3><p>Corta y vendedora: qué ofrecemos y cómo agendan una cita. Al punto.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="fusagasuga.html#politico"><span class="ic">🗳️</span><h3>Campañas y cifras en Fusa</h3><p>El mercado electoral 2027 y cómo, en la práctica, llegamos a los números.</p><span class="go">Ver el mercado →</span></a>
+    <a class="c" href="index.html"><span class="ic">📋</span><h3>El dossier completo</h3><p>El análisis interno con todo el detalle: legal, tarifas, equipo y ruta.</p><span class="go">Abrir dossier →</span></a>
+  </div>
+</div></section>
+
+<!-- VISTA COMPLETA -->
+<section class="view" id="view-full"><div class="wrap">
+  <div class="vhead">
+    <div><div class="hello">Modo completo</div><h2>Todo el proyecto</h2></div>
+    <button class="logout" data-logout>Salir</button>
+  </div>
+  <p class="vlead">Acceso a las cuatro piezas del proyecto.</p>
+  <div class="cards">
+    <a class="c" href="index.html"><span class="ic">📊</span><h3>Dossier interno</h3><p>El análisis completo del negocio.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="fusagasuga.html"><span class="ic">🌿</span><h3>Fusagasugá a fondo</h3><p>La plaza, la avicultura y el plan local.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="propuesta.html"><span class="ic">🎯</span><h3>Propuesta comercial</h3><p>La página de ventas para clientes.</p><span class="go">Abrir →</span></a>
+    <a class="c" href="mapa.html"><span class="ic">🗺️</span><h3>Mapa mental</h3><p>Todo el negocio conectado, interactivo.</p><span class="go">Abrir →</span></a>
+  </div>
+</div></section>
+
+<footer>Acceso privado · [ Nombre ] · 2027</footer>
+
+<script>
+(function(){
+  var gateWrap=document.getElementById('gate-wrap');
+  var pass=document.getElementById('pass');
+  var err=document.getElementById('err');
+  var views={juliana:document.getElementById('view-juliana'),julian:document.getElementById('view-julian'),full:document.getElementById('view-full')};
+
+  function norm(s){return (s||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ');}
+  var keys={'julitaa':'juliana','julianb':'julian','bashi':'full'};
+
+  var chick='<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="40" cy="53" rx="23" ry="20" fill="#FFD23F"/><path d="M18 53 q-7 2 -3 9 q6 0 7 -6 z" fill="#FFC53F"/><path d="M62 53 q7 2 3 9 q-6 0 -7 -6 z" fill="#FFC53F"/><circle cx="40" cy="32" r="17" fill="#FFDE59"/><circle cx="34" cy="31" r="2.6" fill="#333"/><circle cx="46" cy="31" r="2.6" fill="#333"/><path d="M37 36 l3 4 l3 -4 z" fill="#FF8A1E"/><path d="M44 20 q3 -7 8 -5 q-1 5 -6 7 z" fill="#FF9BC4"/><path d="M31 72 l-3 6 M40 74 v6 M49 72 l3 6" stroke="#FF8A1E" stroke-width="3" stroke-linecap="round" fill="none"/></svg>';
+  function chicks(on){
+    document.querySelectorAll('.jl-chick').forEach(function(c){c.remove();});
+    if(!on)return;
+    [['left:14px;bottom:70px;','0s'],['right:16px;top:84px;','.7s'],['left:46%;bottom:14px;opacity:.3;','1.3s']].forEach(function(p){
+      var d=document.createElement('div');d.className='jl-chick';d.style.cssText=p[0];d.style.animationDelay=p[1];d.innerHTML=chick;document.body.appendChild(d);
+    });
+  }
+  function show(role){
+    gateWrap.style.display='none';
+    Object.keys(views).forEach(function(k){views[k].classList.remove('active');});
+    if(views[role])views[role].classList.add('active');
+    var jul=(role==='juliana');
+    document.documentElement.classList.toggle('theme-juliana',jul);
+    chicks(jul);
+    window.scrollTo(0,0);
+  }
+  function reset(){
+    Object.keys(views).forEach(function(k){views[k].classList.remove('active');});
+    document.documentElement.classList.remove('theme-juliana');chicks(false);
+    gateWrap.style.display='flex';pass.value='';err.classList.remove('show');pass.focus();
+  }
+  function tryEnter(){
+    var role=keys[norm(pass.value)];
+    if(role){err.classList.remove('show');show(role);}
+    else{err.classList.add('show');pass.select();}
+  }
+  document.getElementById('enter').addEventListener('click',tryEnter);
+  pass.addEventListener('keydown',function(e){if(e.key==='Enter')tryEnter();});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-logout]'),function(b){b.addEventListener('click',reset);});
+  pass.focus();
+})();
+</script>
+</body>
+</html>
